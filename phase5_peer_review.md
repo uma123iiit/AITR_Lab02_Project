@@ -8,7 +8,7 @@ The repository includes `paper/research_paper.tex` and `paper/references.bib`. T
 
 This is an AI-assisted internal technical review of the included draft, not an external human peer review or a journal decision. Major concerns:
 
-1. **RQ3 is not yet an empirical result.** The error sample is drawn, but all coder fields are blank. Remedy: code the cases against the frozen codebook using actual claim/evidence content; log uncertain cases and the annotator count. Do not report kappa with one annotator.
+1. **RQ3 is not yet an empirical result.** The error sample is drawn and an AI-assisted preliminary code file exists for all 50 rows. These are not human-final; 48 text judgments require student review against the exact experimental data snapshot. Remedy: verify each case against the frozen codebook, record corrections and the annotator count. Do not report kappa with one annotator.
 2. **The oracle/NEI comparison is confounded.** B has empty evidence for NEI, so the model can learn a label shortcut. Remedy: foreground the 182-claim gold-evidence slice and the empty-evidence-rule control; do not interpret all-286 B gain as a causal benefit of evidence.
 3. **No independent model-family comparator was run end-to-end.** DeBERTa was smoke-tested only. Remedy: state the two-week/CPU scope and use a second learned verifier only in a separately planned experiment; do not compare to published CliVER scores as if same protocol.
 4. **Development-set tuning risk.** Results are only dev results and no untouched public test labels are available. Remedy: use exact terminology and avoid claims of generalization.
@@ -19,7 +19,7 @@ This is an AI-assisted internal technical review of the included draft, not an e
 Minor issues:
 - The initial audit JSON is earlier than RUN-001 and contains stale-in-time warnings; retain and label it as an initial audit, with the chronology explanation in Phase III.
 - `primary_frozen.yaml` retains an older `rq3.codebook: NOT FROZEN` field; later hashed codebook and PC-006 amendment are documented in `protocol_status_reconciliation.md`. The original frozen artifact is preserved unchanged.
-- No `.ipynb` notebook is present; scripts plus unit tests are the executable project interface. This should be disclosed, not silently represented as a notebook submission.
+- No `.ipynb` notebook is included; Python modules, command-line scripts and unit tests are the executable project interface. If the assignment explicitly requires a notebook, a reproducible notebook wrapper remains to be created and run.
 - The original review PDF and full Claude transcript are not included in the provided ZIP. The former limits Phase I provenance; the latter limits independent audit of the complete AI interaction history.
 - Enrollment number and any institution-specific identity fields must be completed before submission.
 

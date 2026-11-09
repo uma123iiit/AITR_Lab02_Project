@@ -19,7 +19,7 @@ These examples are taken from the supplied AI log; they are not independently ve
 The log assigns the student decisions about the matched-set policy, near-duplicate threshold, gold-evidence construction, freeze timing, codebook categories and amendments. The student should be prepared to explain: (1) why the primary cutoff is Jaccard >=0.90 and why 0.70 is sensitivity only; (2) why condition B is oracle-only and confounded for NEI; (3) why BM25 Recall@5 is not classification accuracy; (4) why no Cohen's kappa is reported; and (5) why the study is not a novel first oracle/open comparison.
 
 ## Current review activity
-This review used the instructor assignment PDF, Prompt 03-07 PDFs and the uploaded ZIP. It independently checked the saved prediction hashes, matched IDs and reported metric values from archived prediction files. It updated the paper to an eight-page manuscript and created a technical review and marking report. It did **not** rerun model training, access Colab/GPU, annotate the 50 RQ3 cases, or independently reproduce the historical Claude session.
+This review used the instructor assignment PDF, Prompt 03-07 PDFs and the uploaded ZIP. It independently checked the saved prediction hashes, matched IDs and reported metric values from archived prediction files. It updated the paper to an eight-page manuscript and created a technical review and marking report. It did **not** rerun model training, access Colab/GPU, complete student verification of the 50 preliminary RQ3 codes, or independently reproduce the historical Claude session.
 
 ## Remaining accountability actions
 - Student: verify and explain all modeling/protocol choices before the demonstration.
@@ -27,4 +27,4 @@ This review used the instructor assignment PDF, Prompt 03-07 PDFs and the upload
 - Student: review the final LaTeX source, figures, tables, citations and numerical interpretations before submission.
 - Student: add only authentic corrections or reflections after personally checking the work.
 
-**Status:** Substantially documented; full transcript, student sign-off and RQ3 annotation remain outstanding.
+**Status:** Substantially documented; full transcript, student sign-off and verification of the 50 preliminary RQ3 codes remain outstanding.
