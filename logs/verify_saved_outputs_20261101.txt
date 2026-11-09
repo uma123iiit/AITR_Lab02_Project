@@ -1,0 +1,5 @@
+PASS: prediction SHA-256, row counts, unique IDs and A/B/C matched IDs
+A: n=286 accuracy=0.4615 macro_f1=0.3757
+B: n=286 accuracy=0.6014 macro_f1=0.4988
+C: n=286 accuracy=0.4371 macro_f1=0.3650
+Note: this read-only check verifies archived outputs, not model correctness or a new experiment run.

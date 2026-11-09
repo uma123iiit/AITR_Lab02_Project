@@ -1,0 +1,12 @@
+[hit] n=164 gold labels={'SUPPORT': 115, 'CONTRADICT': 49}
+   A: 66/164 = 0.402  Wilson95 [0.330, 0.479]
+   B: 82/164 = 0.500  Wilson95 [0.424, 0.576]
+   C: 65/164 = 0.396  Wilson95 [0.325, 0.473]
+   correct by gold label: {'CONTRADICT': {'n': 49, 'A': 2, 'B': 2, 'C': 3}, 'SUPPORT': {'n': 115, 'A': 64, 'B': 80, 'C': 62}}
+[miss] n=18 gold labels={'CONTRADICT': 11, 'SUPPORT': 7}
+   A: 5/18 = 0.278  Wilson95 [0.125, 0.509]
+   B: 6/18 = 0.333  Wilson95 [0.163, 0.563]
+   C: 3/18 = 0.167  Wilson95 [0.058, 0.392]
+   correct by gold label: {'CONTRADICT': {'n': 11, 'A': 0, 'B': 0, 'C': 0}, 'SUPPORT': {'n': 7, 'A': 5, 'B': 6, 'C': 3}}
+exploratory Fisher exact p (C, hit vs miss): 0.07229433095745492
+written to: /tmp/scifact-run/repo/results/metrics/rq2_hit_miss_20261030T140935Z.json
