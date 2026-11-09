@@ -6,6 +6,23 @@
 **Dataset:** SciFact  
 **Study type:** Controlled comparative development-set study
 
+## Dataset download
+
+This project uses the **SciFact** scientific claim-verification dataset released by AllenAI.
+
+- **[Download the official SciFact dataset archive (data.tar.gz)](https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz)**
+- [Official AllenAI SciFact repository and dataset documentation](https://github.com/allenai/scifact)
+- [Dataset schema documentation](https://github.com/allenai/scifact/blob/master/doc/data.md)
+- [Official component licence statements](https://github.com/allenai/scifact/blob/master/LICENSE.md)
+
+To download and extract the current official archive from the repository root:
+
+```bash
+bash scripts/01_download_data.sh
+```
+
+The script downloads the current `release/latest` archive. This is a moving URL and may not be byte-identical to the historical snapshot used for the archived experiments. The project records the historical SHA-256 in `data/README.md`; compare hashes before treating a newly downloaded archive as an exact reproduction. Raw dataset files are intentionally not committed to this repository. See `data/README.md` for source, split, provenance and licence details.
+
 ## Research question
 On matched SciFact development claims, how do claim-only (A), claim + annotated gold evidence (B), and claim + BM25 top-five retrieved evidence (C) affect three-way scientific claim-verification performance? Supporting analyses examine retrieval Recall@5 and a prespecified error sample.
 
@@ -27,7 +44,7 @@ On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0
 - `results/` - timestamped actual metrics, predictions, retrieval ranks, tables and figures.
 - `logs/` - actual console outputs, protocol changes, environment and audit logs.
 - `paper/` - LaTeX manuscript source, bibliography, citation audit and reference notes. The compiled PDF and figure image assets are not part of the current GitHub upload yet.
-- `data/README.md` - acquisition, split and component-license provenance; raw data are excluded.
+- `data/README.md` - dataset download link, acquisition, split and component-license provenance; raw data are excluded.
 - `research_decisions.md`, `review_to_experiment_trace.md`, `baseline_validation.md`, `ai_assistance_log.md` - research provenance and verification.
 
 ## Reproduction (test required on a clean machine)
@@ -69,7 +86,7 @@ The second command must be run only where the exact matching SciFact `claims_dev
 - Dataset acquisition used the official `release/latest` archive and has a recorded SHA-256, but no immutable upstream commit was recorded. Raw data are excluded.
 
 ## Data licensing and handling
-The official AllenAI repository license describes claims/evidence annotations as CC BY 4.0, S2ORC-derived corpus abstracts as ODC-By 1.0, and repository code as Apache 2.0. The exact `release/latest` archive is not mapped to an immutable commit, so raw files are not redistributed. The separate Hugging Face mirror reports different license metadata and split structure; it was not used for the archived run. See `data/README.md`.
+The official AllenAI repository license describes claims/evidence annotations as CC BY 4.0, S2ORC-derived corpus abstracts as ODC-By 1.0, and repository code as Apache 2.0. The exact `release/latest` archive is not mapped to an immutable commit, so raw files are not redistributed. The separate Hugging Face mirror reports different licence metadata and split structure; it was not used for the archived run. See `data/README.md`.
 
 ## Contribution boundary
 This is a controlled comparison with a simple lexical verifier, not a new neural architecture or a first-of-kind oracle/open study. The prior literature review motivates evidence provenance and retrieval risk, but the implementation does not test free-form LLM generation or validate the full nine-category literature-review taxonomy. See `review_to_experiment_trace.md`.
@@ -78,4 +95,4 @@ This is a controlled comparison with a simple lexical verifier, not a new neural
 The primary dataset paper is Wadden et al. (2020), *Fact or Fiction: Verifying Scientific Claims*, EMNLP. The full bibliography is in `paper/references.bib`.
 
 ## GitHub upload status
-The repository currently includes the core Python source modules, scripts, tests, frozen configurations, research/provenance documents, LaTeX manuscript source, bibliography, selected archived result tables and selected audit logs. The binary PDF/PNG assets, full raw prediction/retrieval CSV archive, and some remaining log files are not yet uploaded. Raw SciFact data remain intentionally excluded. Do not interpret this as a complete mirror of the prepared ZIP until the remaining assets are added.
+The repository includes the core Python source modules, scripts, tests, frozen configurations, research/provenance documents, LaTeX manuscript source, bibliography, selected archived result tables and selected audit logs. Some binary PDF/PNG assets and additional result/log files are not yet uploaded. Raw SciFact data remain intentionally excluded; use the official dataset link above to obtain the data locally. Do not interpret this as a complete mirror of the prepared ZIP until the remaining assets are added.
