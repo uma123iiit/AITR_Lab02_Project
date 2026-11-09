@@ -1,0 +1,95 @@
+{
+  "timestamp_utc": "20261030T132321Z",
+  "checks": [
+    {
+      "check": "D1 label counts train vs paper Table 2a",
+      "status": "PASS",
+      "detail": "repo={'NOT_ENOUGH_INFO': 304, 'CONTRADICT': 173, 'SUPPORT': 332} paper={'SUPPORT': 332, 'NOT_ENOUGH_INFO': 304, 'CONTRADICT': 173}"
+    },
+    {
+      "check": "D1 label counts dev vs paper Table 2a",
+      "status": "PASS",
+      "detail": "repo={'NOT_ENOUGH_INFO': 112, 'SUPPORT': 124, 'CONTRADICT': 64} paper={'SUPPORT': 124, 'NOT_ENOUGH_INFO': 112, 'CONTRADICT': 64}"
+    },
+    {
+      "check": "D1 corpus size and test split",
+      "status": "PASS",
+      "detail": "corpus=5183 (paper 5183); test n=300 without evidence field (paper: 100/100/100, labels private)"
+    },
+    {
+      "check": "D2 evidence documents are cited documents",
+      "status": "PASS",
+      "detail": "violations=0 (docs.md does not state this as a rule; checked empirically)"
+    },
+    {
+      "check": "D3 claims with mixed SUPPORT/CONTRADICT across documents",
+      "status": "PASS",
+      "detail": "0 (paper Table 2b: 63 claims have 2+ evidence abstracts)"
+    },
+    {
+      "check": "D3 claims with 2+ evidence documents",
+      "status": "INFO",
+      "detail": "47 of 1109 train+dev claims"
+    },
+    {
+      "check": "D4 B input = union of ALL rationale sets per document",
+      "status": "WARN",
+      "detail": "75/182 matched dev claims with evidence have 2+ rationale sets in a document; mean evidence sentences union=1.91 vs first-rationale-only=1.22. Original paper trains on gold rationales; which alternative to use is a methodological choice not fixed in the protocol"
+    },
+    {
+      "check": "A1 metrics recomputed with sklearn from predictions.csv",
+      "status": "PASS",
+      "detail": "max abs diff vs metrics.json over 4 slices = 1.11e-16 (run eval_20261030T131623Z)"
+    },
+    {
+      "check": "A2 independent refit reproduces saved condition-A probabilities",
+      "status": "PASS",
+      "detail": "max abs diff=5.00e-09 (saved probabilities have 8 decimals); class order [np.str_('CONTRADICT'), np.str_('NOT_ENOUGH_INFO'), np.str_('SUPPORT')]"
+    },
+    {
+      "check": "A3 saved vocabulary comes from train claims only",
+      "status": "PASS",
+      "detail": "saved vocab=9018 == train-only refit; train+dev fit would give 10957 (so the check can detect dev leakage)"
+    },
+    {
+      "check": "S1 trivial baselines on the 286 matched dev claims",
+      "status": "INFO",
+      "detail": "majority class (SUPPORT): accuracy=0.427 macro-F1=0.199 | shuffled train labels, 20 seeds: macro-F1=0.319\u00b10.028 accuracy=0.392\u00b10.031 | condition A: macro-F1=0.376 accuracy=0.462"
+    },
+    {
+      "check": "S1 condition A vs shuffled-label control",
+      "status": "WARN",
+      "detail": "A macro-F1 is 2.0 SDs above the shuffled-label mean (a pipeline that learns nothing should sit near it)"
+    },
+    {
+      "check": "R1 independent BM25 reproduces saved top-5 ids and scores (60 dev claims)",
+      "status": "PASS",
+      "detail": "mismatched id lists=0, mismatched scores=0; terms with negative IDF (in >half of docs) replaced by 0.25*average_idf=1.8108: 15 terms (library behaviour, e.g. ['a', 'and', 'are', 'as', 'by', 'for'])"
+    },
+    {
+      "check": "R2 Recall@5 bm25 recomputed independently",
+      "status": "PASS",
+      "detail": "164/182 vs saved 164/182"
+    },
+    {
+      "check": "R2 Recall@5 tfidf recomputed independently",
+      "status": "PASS",
+      "detail": "151/182 vs saved 151/182"
+    },
+    {
+      "check": "P1 config id, matched-ids hash and corpus hash agree across run, retrieval and freeze draft",
+      "status": "PASS",
+      "detail": "config tfidf-lr-d35269ef"
+    },
+    {
+      "check": "P2 conditions with saved predictions",
+      "status": "WARN",
+      "detail": "['A']; B and C not run yet, so B/C code paths are untested end to end"
+    },
+    {
+      "check": "P3 condition A predates the freeze gate",
+      "status": "WARN",
+      "detail": "A was run before configs/primary_frozen.yaml existed; the frozen rerun must reproduce it exactly (check below)"
+    }
+  ]
+}
