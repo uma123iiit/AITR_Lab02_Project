@@ -76,14 +76,15 @@ python scripts/17_enrich_rq3_sample.py --data-dir data/raw/scifact
 
 The second command must be run only where the exact matching SciFact `claims_dev.jsonl` and `corpus.jsonl` are available. The generated text packet contains dataset text and must remain local.
 
-## Verification status (02 November 2026)
-- LaTeX manuscript compiles to 8 A4 pages; page render inspected.
-- Citation keys match bibliography entries; see `paper/CITATION_AUDIT.md`.
-- Archived prediction hashes, row counts, IDs, accuracy and macro-F1 pass the read-only audit.
-- `compileall` passes. A partial pytest run passes 51 tests with only `test_inputs.py` and `test_retrieval.py` excluded; both are blocked at collection by missing `rank-bm25==0.2.2`. Three RQ3 enrichment tests and five metadata-code tests also pass independently.
-- Full suite has **not** passed in the specified Python 3.11.2 environment. A package-index DNS failure prevented installing the missing dependency in the current Python 3.13.5 audit runtime. 51 tests passed when the two dependency-blocked modules were excluded. See `logs/emergency_reaudit_20261102/`.
-- RQ3: all 50 frozen condition–claim rows have AI-assisted preliminary codes (48 text-review judgments and two deterministic metadata assignments: B/303 `NO_EVIDENCE_SEEN`, C/756 `RETRIEVAL_MISS`). These are not final human annotations. The public mirror was not checksum-matched to the exact historical corpus snapshot; student verification of all 50 cases remains required. No Cohen's kappa is claimed.
-- Dataset acquisition used the official `release/latest` archive and has a recorded SHA-256, but no immutable upstream commit was recorded. Raw data are excluded.
+## Implementation and verification status (02 November 2026)
+
+- **Manuscript preparation:** The LaTeX manuscript was successfully compiled into an eight-page A4 document. The rendered pages were inspected for formatting and layout issues.
+- **Citation verification:** The citation keys used in the manuscript were checked against the bibliography entries. The results are documented in `paper/CITATION_AUDIT.md`.
+- **Archived results verification:** The saved prediction files were checked for consistency, including file hashes, row counts, claim identifiers, accuracy, and macro-F1 scores. The archived outputs passed these checks.
+- **Code and test verification:** Python compilation checks (`compileall`) completed successfully. A partial test run passed 51 tests. Two test modules, `test_inputs.py` and `test_retrieval.py`, could not be collected because the required `rank-bm25==0.2.2` dependency was unavailable. Three additional RQ3 enrichment tests and five metadata-coding tests passed independently. Therefore, the complete test suite has not yet been verified successfully.
+- **Environment limitation:** The project specifies Python 3.11.2. During a later audit using Python 3.13.5, a package-index DNS failure prevented installation of the missing dependency. The complete test suite should be rerun in the specified environment after resolving this dependency issue. Relevant logs are available in `logs/emergency_reaudit_20261102/`.
+- **RQ3 preliminary analysis:** Preliminary AI-assisted codes were generated for all 50 frozen condition–claim combinations. These include 48 text-based review judgments and two deterministic metadata assignments: B/303 (`NO_EVIDENCE_SEEN`) and C/756 (`RETRIEVAL_MISS`). These codes are intended to support the subsequent review process and should not be treated as final human annotations. All 50 cases still require student verification. No inter-annotator agreement statistic, such as Cohen's kappa, is claimed.
+- **Dataset provenance:** The experiments used the official AllenAI SciFact dataset archive. The original acquisition record contains a SHA-256 checksum, but the download URL (`release/latest`) does not identify an immutable upstream version. The raw dataset is therefore excluded from the public repository. The download source, checksum, and licensing information are documented in `data/README.md`.
 
 ## Data licensing and handling
 The official AllenAI repository license describes claims/evidence annotations as CC BY 4.0, S2ORC-derived corpus abstracts as ODC-By 1.0, and repository code as Apache 2.0. The exact `release/latest` archive is not mapped to an immutable commit, so raw files are not redistributed. The separate Hugging Face mirror reports different licence metadata and split structure; it was not used for the archived run. See `data/README.md`.
