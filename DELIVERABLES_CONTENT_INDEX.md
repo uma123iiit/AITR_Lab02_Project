@@ -20,6 +20,7 @@ This index describes the contents of this GitHub repository only. It is **not** 
 - `phase1_gap_matrix.md` through `phase6_accountability_review.md`, `protocol_status_reconciliation.md`, `reproducibility_audit.md` — project planning, results, review and reproducibility history.
 - `demo_5min.md`, `viva_questions_and_answers.md` — demonstration and viva preparation.
 - `FINAL_STUDENT_REVIEW_CHECKLIST.md` — remaining student-owned submission and verification tasks.
+- `LIMITATIONS_AND_REMEDIATION.md` — limitation-by-limitation status and remediation actions.
 
 ## Important omissions and limitations
 - No Jupyter notebook is included. The workflow is implemented as Python modules, scripts and tests.
