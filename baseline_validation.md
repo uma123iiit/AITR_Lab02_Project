@@ -23,7 +23,7 @@ Status 2026-10-30: 18 checks, 12 PASS, 4 WARN, 2 INFO, 0 FAIL.
 
 ## UNCERTAIN (open)
 - S1: condition A macro-F1 is 2.0 SD above the shuffled-train-label mean (0.319 +/- 0.028 over 20 seeds): the baseline is only modestly above a pipeline that learns nothing. Shuffled-label controls for B and C have not been run.
-- Upstream data revision UNVERIFIED; licence UNRESOLVED. Environment verified locally only; Colab untested.
+- Upstream data revision remains unverified because release/latest is mutable. Component-level licence statements for the official SciFact repository are documented in data/README.md; the exact archived tarball is not mapped to an immutable upstream revision, so snapshot-specific licence association remains partially unresolved. Environment verified locally only; Colab untested.
 - BM25 (rank-bm25 0.2.2, epsilon 0.25) gives negative-IDF terms a floor weight (15 terms, e.g. 'a', 'and', 'are', 'as', 'by', 'for'); effect on retrieval untested.
 - C inputs average about 8,000 characters and the 100,000-feature cap binds for C; the evidence swamps the claim.
 

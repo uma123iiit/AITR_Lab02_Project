@@ -14,7 +14,7 @@ Source protocol: Prompt05 brief, Prompt06 sheet, Prompt07 blueprint (provenance/
 | INFERRED | CONTRADICT is nearly undetected because a bag-of-words verifier cannot see negation or direction | CONTRADICT F1 0.04 to 0.12 across all rows of results/results.csv; mechanism NOT tested |
 | INFERRED | B's primary-set gain over A comes from the empty-evidence = NEI shortcut | B below the empty-evidence rule baseline (results/results_rule_baseline_B.csv); not proven causally |
 | UNKNOWN | Link from the original literature review to this question | the assistant never read paper_mns2026009.pdf, Prompt03 or Prompt04; the student must verify the review-to-gap trace |
-| UNKNOWN | Upstream data revision; licence clearance (Hugging Face card shows cc-by-nc-2.0) | configs/primary_frozen.yaml marks both UNVERIFIED/UNRESOLVED |
+| PARTIALLY RESOLVED | Official SciFact component licence statements are documented in data/README.md; the exact release/latest archive is not tied to an immutable upstream revision, so snapshot-to-licence association remains open | data/README.md; preserve the original frozen config unchanged and read protocol_status_reconciliation.md for chronology |
 | UNKNOWN | Whether results hold on Colab/GPU, and effect of BM25 epsilon floor | Colab rerun and epsilon=0 check not done |
 
 ## Decisions
