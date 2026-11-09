@@ -1,0 +1,128 @@
+status: DRAFT (not frozen)
+created_utc: '2026-10-30T13:26:46.294253+00:00'
+data:
+  source: https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz
+  download_date_utc: '2026-10-30T12:59:41Z'
+  archive_sha256: 11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be
+  file_sha256:
+    corpus.jsonl: b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62
+    claims_train.jsonl: f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0
+    claims_dev.jsonl: 86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217
+    claims_test.jsonl: 558930d75215c73f84a28fe538307d6d397c9de1ec7239514cf45f80d75d2ca3
+  upstream_revision: 'UNVERIFIED: ''release/latest'' tarball; upstream commit not recorded, sha256 recorded'
+  license: 'UNRESOLVED: Hugging Face card shows cc-by-nc-2.0; per-abstract terms not cleared'
+label_mapping:
+  rule: no 'evidence' key -> unlabeled; empty evidence dict -> NOT_ENOUGH_INFO; one distinct raw label (SUPPORT|CONTRADICT)
+    -> that label; mixed or unknown -> excluded
+  labels_in_train:
+  - CONTRADICT
+  - NOT_ENOUGH_INFO
+  - SUPPORT
+  class_order_note: alphabetical, equal to sklearn LogisticRegression.classes_; verify against clf.classes_ at fit
+    time and save in run metadata
+matched_set:
+  split: dev
+  policy: all_labeled
+  near_duplicates: holdout (Jaccard >= 0.9, PC-001)
+  dir: results/audit/dev_all_labeled_nd-holdout
+  ids_sha256: bf4abb6050fb655f941b6eb1219fcc93b5184f63a9feb7dcad650a221eb98f11
+  gold_evidence_slice_sha256: b75522de659ebfa9fe5adc63f790ac1c5ae49b8250d88ef6a5f54b088cb94e85
+  sensitivity_files:
+    sensitivity_j0.7_gold_evidence_claim_ids.txt: 524d47fa6d140b69217dd3d3578d2d66f79e260b1afffab236b3c53216a24806
+    sensitivity_j0.7_matched_claim_ids.txt: 2eb81b28ab1e66ae666007b116210044b6e398351898807efdcec7d99b2c9ffb
+  counts:
+    matched: 286
+    gold_evidence_slice: 182
+condition_inputs:
+  A: claim text only
+  B: 'CLAIM: {claim}
+
+    EVIDENCE: {evidence} with the first annotated rationale set per document in file order (PC-004); empty for NEI
+    claims, so B is an oracle only on the gold-evidence slice'
+  C: 'CLAIM: {claim}
+
+    EVIDENCE: {evidence} with BM25 top-5 title+abstract in rank order'
+  separator: ' | '
+retrieval:
+  run_id: retrieval_20261030T131217Z
+  top_k: 5
+  corpus_sha256: b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62
+  methods:
+    bm25:
+      settings:
+        method: bm25
+        implementation: rank-bm25==0.2.2 BM25Okapi
+        k1: 1.5
+        b: 0.75
+        epsilon: 0.25
+        tokenizer: \w+
+        lowercase: true
+        stopwords: null
+        stemming: null
+        tie_rule: descending score; ties broken by ascending numeric doc_id
+      index_version: bm25|rank-bm25==0.2.2 BM25Okapi|corpus=b8d6c89624cb
+      index_seconds: 0.613
+      search_seconds: 25.768
+      ms_per_query: 23.532
+    tfidf:
+      settings:
+        method: tfidf
+        implementation: scikit-learn==1.9.1 TfidfVectorizer
+        ngram_range:
+        - 1
+        - 2
+        norm: l2
+        lowercase: true
+        min_df: 1
+        token_pattern: (?u)\b\w+\b
+        vocabulary_size: 479115
+        tie_rule: descending score; ties broken by ascending numeric doc_id
+      index_version: tfidf|scikit-learn==1.9.1 TfidfVectorizer|corpus=b8d6c89624cb
+      index_seconds: 3.099
+      search_seconds: 9.609
+      ms_per_query: 8.775
+verifier:
+  family: TF-IDF + LogisticRegression, one model per condition, same train claims
+  config_id: tfidf-lr-d35269ef
+  config:
+    ngram_range:
+    - 1
+    - 2
+    min_df: 1
+    max_features: 100000
+    max_iter: 2000
+    random_state: 42
+    class_weight: null
+    C: 1.0
+    solver: lbfgs
+  prediction_rule: argmax class probability, no threshold tuning
+metrics:
+  primary: macro-F1
+  secondary:
+  - accuracy
+  - per-class P/R/F1
+  - confusion matrix
+  paired_differences:
+  - B-A
+  - C-A
+  - B-C
+  bootstrap:
+    resamples: 2000
+    seed: 42
+    unit: claim id
+    ci: percentile 95%
+  zero_division: '0.0'
+  retrieval: Recall@5 (document-level hit), Wilson 95%
+seed: 42
+software:
+  scikit-learn: 1.9.1
+  numpy: 2.4.6
+  scipy: 1.17.1
+  rank-bm25: 0.2.2
+  matplotlib: 3.11.2
+  python: 3.11.2
+rq3:
+  codebook: NOT FROZEN (must be frozen before sampled errors are inspected)
+  sampling: up to 50 errors, stratified by condition, seed 42
+researcher_inspection_of_inputs: PENDING
+protocol_changes: logs/protocol_changes.md (PC-001..PC-003)

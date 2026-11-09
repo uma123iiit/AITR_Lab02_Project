@@ -1,0 +1,14 @@
+# Lower bounds only. Exact versions are recorded in requirements.lock.txt AFTER the smoke test passes.
+# torch is deliberately NOT listed: use the build preinstalled in Colab so CUDA stays matched.
+numpy>=1.26
+scipy>=1.11
+pandas>=2.1
+scikit-learn>=1.4
+rank-bm25>=0.2.2
+pyyaml>=6.0
+psutil
+tqdm
+matplotlib>=3.8
+# secondary NLI verifier only
+transformers>=4.40
+sentencepiece

@@ -50,20 +50,29 @@ For archived-result verification without raw data:
 PYTHONPATH=src python scripts/14_verify_saved_outputs.py
 ```
 
+For the separate metadata-only RQ3 pre-code and claim text worklist (the latter needs local raw `claims_dev.jsonl`; abstracts are not in this archive):
+
+```bash
+PYTHONPATH=src python scripts/18_partial_rq3_metadata_codes.py
+python scripts/17_enrich_rq3_sample.py --data-dir data/raw/scifact
+```
+
+The second command must be run only where the exact matching SciFact `claims_dev.jsonl` and `corpus.jsonl` are available. The generated text packet contains dataset text and must remain local.
+
 ## Verification status (02 November 2026)
 - LaTeX manuscript compiles to 8 A4 pages; page render inspected.
 - Citation keys match bibliography entries; see `paper/CITATION_AUDIT.md`.
 - Archived prediction hashes, row counts, IDs, accuracy and macro-F1 pass the read-only audit.
-- `compileall` passes. A partial pytest run passes 51 tests with `test_inputs.py` and `test_retrieval.py` excluded because collection was blocked by missing `rank-bm25==0.2.2`.
-- Full suite has **not** passed in the specified Python 3.11.2 environment. See `logs/emergency_reaudit_20261102/`.
-- RQ3 AI-assisted preliminary codes are not final human annotations. Student verification remains required; no Cohen's kappa is claimed.
-- Raw SciFact data are excluded; the exact `release/latest` archive was not mapped to an immutable upstream commit.
+- `compileall` passes. A partial pytest run passes 51 tests with only `test_inputs.py` and `test_retrieval.py` excluded; both are blocked at collection by missing `rank-bm25==0.2.2`. Three RQ3 enrichment tests and five metadata-code tests also pass independently.
+- Full suite has **not** passed in the specified Python 3.11.2 environment. A package-index DNS failure prevented installing the missing dependency in the current Python 3.13.5 audit runtime. 51 tests passed when the two dependency-blocked modules were excluded. See `logs/emergency_reaudit_20261102/`.
+- RQ3: all 50 frozen condition–claim rows have AI-assisted preliminary codes (48 text-review judgments and two deterministic metadata assignments: B/303 `NO_EVIDENCE_SEEN`, C/756 `RETRIEVAL_MISS`). These are not final human annotations. The public mirror was not checksum-matched to the exact historical corpus snapshot; student verification of all 50 cases remains required. No Cohen's kappa is claimed.
+- Dataset acquisition used the official `release/latest` archive and has a recorded SHA-256, but no immutable upstream commit was recorded. Raw data are excluded.
 
 ## Data licensing and handling
-The official AllenAI repository license describes claims/evidence annotations as CC BY 4.0, S2ORC-derived corpus abstracts as ODC-By 1.0, and repository code as Apache 2.0. Raw files are not redistributed. See `data/README.md`.
+The official AllenAI repository license describes claims/evidence annotations as CC BY 4.0, S2ORC-derived corpus abstracts as ODC-By 1.0, and repository code as Apache 2.0. The exact `release/latest` archive is not mapped to an immutable commit, so raw files are not redistributed. The separate Hugging Face mirror reports different license metadata and split structure; it was not used for the archived run. See `data/README.md`.
 
 ## Contribution boundary
-This is a controlled comparison with a simple lexical verifier, not a new neural architecture or a first-of-kind oracle/open study. The implementation does not test free-form LLM generation or validate the full nine-category literature-review taxonomy.
+This is a controlled comparison with a simple lexical verifier, not a new neural architecture or a first-of-kind oracle/open study. The prior literature review motivates evidence provenance and retrieval risk, but the implementation does not test free-form LLM generation or validate the full nine-category literature-review taxonomy. See `review_to_experiment_trace.md`.
 
 ## Citation
-Wadden et al. (2020), *Fact or Fiction: Verifying Scientific Claims*, EMNLP. The full bibliography is in `paper/references.bib`.
+The primary dataset paper is Wadden et al. (2020), *Fact or Fiction: Verifying Scientific Claims*, EMNLP. The full bibliography is in `paper/references.bib`.

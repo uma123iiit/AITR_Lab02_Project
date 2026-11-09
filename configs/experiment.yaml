@@ -1,0 +1,12 @@
+# Environment-stage config. configs/primary_frozen.yaml is created at the freeze gate (Prompt07 §4A), not now.
+seed: 42
+bootstrap_resamples: 2000
+retrieval: {top_k: 5}
+nli: {model: cross-encoder/nli-deberta-v3-base, batch_size: 4, max_length: 256}
+paths: {raw: data/raw/scifact, processed: data/processed, results: results}
+matched_set:
+  split: dev
+  policy: all_labeled            # PC-001
+  near_duplicates: holdout       # dev claims with Jaccard >= 0.9 to a train claim excluded; train unchanged
+  secondary_slice: gold_evidence_only   # declared before any model run; macro-F1 over SUPPORT+CONTRADICT
+  ids_file: results/audit/dev_all_labeled_nd-holdout/matched_claim_ids.txt
