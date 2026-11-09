@@ -1,0 +1,4 @@
+Excluding only the two modules that cannot import without rank-bm25:
+...................................................                      [100%]
+51 passed in 0.82s
+EXIT_CODE=0

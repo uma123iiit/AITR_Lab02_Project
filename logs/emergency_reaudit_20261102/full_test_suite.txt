@@ -1,0 +1,41 @@
+Runtime: Python 3.13.5
+Dependency: 
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+WARNING: Package(s) not found: rank-bm25
+
+
+==================================== ERRORS ====================================
+_______________________ ERROR collecting test_inputs.py ________________________
+ImportError while importing test module '/mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_inputs.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_inputs.py:8: in <module>
+    from scifact_verif import inputs as I  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/src/scifact_verif/inputs.py:6: in <module>
+    from scifact_verif import retrieval
+mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/src/scifact_verif/retrieval.py:11: in <module>
+    from rank_bm25 import BM25Okapi
+E   ModuleNotFoundError: No module named 'rank_bm25'
+______________________ ERROR collecting test_retrieval.py ______________________
+ImportError while importing test module '/mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_retrieval.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_retrieval.py:10: in <module>
+    from scifact_verif import metrics, retrieval as R  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/src/scifact_verif/retrieval.py:11: in <module>
+    from rank_bm25 import BM25Okapi
+E   ModuleNotFoundError: No module named 'rank_bm25'
+=========================== short test summary info ============================
+ERROR mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_inputs.py
+ERROR mnt/data/final_audit_work/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_retrieval.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 0.88s
+EXIT_CODE=2

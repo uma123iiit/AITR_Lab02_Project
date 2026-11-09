@@ -1,0 +1,2 @@
+compileall:
+EXIT_CODE=0

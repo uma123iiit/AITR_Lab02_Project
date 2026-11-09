@@ -1,0 +1,4 @@
+RQ3 ENRICHMENT TESTS:
+...                                                                      [100%]
+3 passed in 0.05s
+EXIT_CODE=0
