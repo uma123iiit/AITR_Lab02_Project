@@ -1,0 +1,35 @@
+
+==================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_inputs.py _____________________
+ImportError while importing test module '/mnt/data/audit_work/AITR_Lab02_90plus_Submission/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_inputs.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_inputs.py:8: in <module>
+    from scifact_verif import inputs as I  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/scifact_verif/inputs.py:6: in <module>
+    from scifact_verif import retrieval
+src/scifact_verif/retrieval.py:11: in <module>
+    from rank_bm25 import BM25Okapi
+E   ModuleNotFoundError: No module named 'rank_bm25'
+___________________ ERROR collecting tests/test_retrieval.py ___________________
+ImportError while importing test module '/mnt/data/audit_work/AITR_Lab02_90plus_Submission/project/AITR_Lab02_EnrollmentNo_SciFactEvidence/tests/test_retrieval.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_retrieval.py:10: in <module>
+    from scifact_verif import metrics, retrieval as R  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/scifact_verif/retrieval.py:11: in <module>
+    from rank_bm25 import BM25Okapi
+E   ModuleNotFoundError: No module named 'rank_bm25'
+=========================== short test summary info ============================
+ERROR tests/test_inputs.py
+ERROR tests/test_retrieval.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 0.73s

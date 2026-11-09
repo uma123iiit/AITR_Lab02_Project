@@ -1,0 +1,6 @@
+PASS A: SHA256, n=286, unique/matched IDs, labels, accuracy=0.4615, macro-F1=0.3757
+PASS B: SHA256, n=286, unique/matched IDs, labels, accuracy=0.6014, macro-F1=0.4988
+PASS C: SHA256, n=286, unique/matched IDs, labels, accuracy=0.4371, macro-F1=0.3650
+PASS RQ3 sample structure: n=50, coder_category blank=50, coder_note blank=50
+PASS retrieval metrics JSON readable; see results/retrieval_eval/.../retrieval_metrics.json
+LIMIT: this script validates archived files and metric calculations; it does not retrain models or verify source-data licensing.

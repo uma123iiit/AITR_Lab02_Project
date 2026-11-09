@@ -1,0 +1,49 @@
+=== env smoke test 2026-10-30T12:59:45.859835+00:00 root=/tmp/scifact-run/repo ===
+   numpy=2.4.6, scipy=1.17.1, scikit-learn=1.9.1, rank-bm25=0.2.2, pyyaml=6.0.3, pandas=3.0.6, psutil=7.2.2, torch=2.15.0+cpu, transformers=5.20.1, sentencepiece=0.2.2, tqdm=4.70.1, matplotlib=3.11.2
+[PASS] packages :: all present
+[PASS] system :: {"python": "3.11.2", "platform": "Linux-6.12.94+-x86_64-with-glibc2.36", "cpus": 96, "ram_gb": 377.9, "disk_free_gb": 4816.7, "colab": false}
+[WARN] gpu :: CUDA unavailable -> NLI runs on CPU (slow); {"torch": "2.15.0+cpu", "torch_cuda_build": null, "cuda_available": false, "cudnn": null}
+[PASS] seed_reproducibility :: {"seed": 42, "deterministic_requested": false, "numpy": true, "torch": true, "torch_deterministic_algorithms": false}
+   corpus: n=5183 keys={'doc_id': 5183, 'title': 5183, 'abstract': 5183, 'structured': 5183} doc_id type=int dup_ids=0
+   train: n=809 keys={'id': 809, 'claim': 809, 'evidence': 809, 'cited_doc_ids': 809} id type=int dup_ids=0 labels={'NOT_ENOUGH_INFO': 304, 'CONTRADICT': 173, 'SUPPORT': 332} with_nonempty_evidence=505
+   dev: n=300 keys={'id': 300, 'claim': 300, 'evidence': 300, 'cited_doc_ids': 300} id type=int dup_ids=0 labels={'NOT_ENOUGH_INFO': 112, 'SUPPORT': 124, 'CONTRADICT': 64} with_nonempty_evidence=188
+   test: n=300 keys={'id': 300, 'claim': 300} id type=int dup_ids=0
+   evidence doc ids absent from corpus: 0
+   sample dev: {"id": 248, "claim": "Chenodeosycholic acid treatment increases whole-body energy expenditure.", "evidence": {"1568684": [{"sentences": [1, 3], "label": "SUPPORT"}, {"sentences": [4], "label": "SUPPORT"}]}, "cited_doc_ids": [1568684]}
+   sample dev: {"id": 56, "claim": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration.", "evidence": {"4709641": [{"sentences": [1], "label": "SUPPORT"}]}, "cited_doc_ids": [4709641]}
+   sample corpus: {"doc_id": 13794374, "title": "COPI Complex Is a Regulator of Lipid Homeostasis", "abstract": ["Lipid droplets are ubiquitous triglyceride and sterol ester storage organelles required for energy storage homeostasis and biosynthesis.", "Although little is known about lipid droplet formation and regul
+[PASS] data_audit :: data dir /tmp/scifact-run/repo/data/raw/scifact/data
+   train n=809 X.shape=(809, 9018) class order=[np.str_('CONTRADICT'), np.str_('NOT_ENOUGH_INFO'), np.str_('SUPPORT')] proba.shape=(20, 3)
+   claim 248: gold=SUPPORT pred=SUPPORT p=[0.248, 0.247, 0.505]
+   claim 56: gold=SUPPORT pred=CONTRADICT p=[0.349, 0.305, 0.346]
+   claim 649: gold=NOT_ENOUGH_INFO pred=NOT_ENOUGH_INFO p=[0.167, 0.531, 0.302]
+   claim 577: gold=NOT_ENOUGH_INFO pred=SUPPORT p=[0.299, 0.331, 0.37]
+   claim 536: gold=SUPPORT pred=CONTRADICT p=[0.359, 0.291, 0.351]
+[PASS] tfidf_logreg :: 20 smoke claims scored (plumbing only)
+   index 0.5s, retrieval 0.47s for 20 claims; invalid ids=0
+   example top5 claim 248: [('1568684', 33.06), ('25050364', 29.86), ('23369842', 24.34), ('26902591', 20.36), ('14865329', 19.21)]
+   input B (gold) preview: 'CLAIM: Chenodeosycholic acid treatment increases whole-body energy expenditure.\nEVIDENCE: In rodents, BAT can be activated by bile acids, which activate type 2 iodothyronine deiodinase (D2) in BAT via'
+   input C (retrieved) preview: 'CLAIM: Chenodeosycholic acid treatment increases whole-body energy expenditure.\nEVIDENCE: The Bile Acid Chenodeoxycholic Acid Increases Human Brown Adipose Tissue Activity. The interest in brown adipo'
+   smoke sample hit@5 plumbing: 14/14 claims with gold evidence (NOT a result)
+[PASS] condition_inputs_ABC_and_bm25 :: top-5 ids valid; B/C inputs constructed
+   fit 3.0s, matrix (5183, 477848), example top5 claim 248: [('23369842', 0.227), ('25050364', 0.223), ('1568684', 0.169), ('1590744', 0.107), ('7813993', 0.107)]
+[PASS] tfidf_retrieval :: top-5 ids valid
+   revision=None id2label={0: 'contradiction', 1: 'entailment', 2: 'neutral'} load=2.2s device=cpu
+   logits/probs shape=(4, 3) batch=4 max_len=256 inference=173ms peak_vram_mb=None truncated=[False, False, False, False]
+   'Aspirin lowers heart attack risk.': contradiction=0.000, entailment=0.998, neutral=0.002
+   'Aspirin increases heart attack risk.': contradiction=1.000, entailment=0.000, neutral=0.000
+   'Chocolate improves memory.': contradiction=0.598, entailment=0.381, neutral=0.021
+   'Vitamin D prevents fractures.': contradiction=0.998, entailment=0.001, neutral=0.002
+[PASS] nli_deberta :: model loads, labels read from config, forward pass ok on cpu
+
+=== SUMMARY ===
+PASS  packages
+PASS  system
+WARN  gpu
+PASS  seed_reproducibility
+PASS  data_audit
+PASS  tfidf_logreg
+PASS  condition_inputs_ABC_and_bm25
+PASS  tfidf_retrieval
+PASS  nli_deberta
+OVERALL: NO FAILURES (review WARN/SKIP manually)  report=/tmp/scifact-run/repo/results/env_smoke/env_report_20261030T125959Z.json

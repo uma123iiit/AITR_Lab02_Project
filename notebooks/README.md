@@ -1,0 +1,3 @@
+# Notebook status
+
+No Jupyter notebook is included. The executable research workflow is provided as Python modules, command-line scripts and unit tests under `src/`, `scripts/` and `tests/`. This is disclosed rather than representing scripts as a notebook submission. If the instructor explicitly requires an `.ipynb`, prepare one as a thin, reproducible wrapper around these scripts and rerun it in the target environment; do not copy unexecuted output cells.

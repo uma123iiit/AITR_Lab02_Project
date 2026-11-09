@@ -1,0 +1,228 @@
+Development-set evaluation (official dev split, frozen matched claims). Not a test result.
+
+[A] primary_matched: n=286 macro-F1 (CONTRADICT+NOT_ENOUGH_INFO+SUPPORT)=0.3757 accuracy=0.4615
+   CONTRADICT       P=0.083 R=0.033 F1=0.048 support=60
+   NOT_ENOUGH_INFO  P=0.587 R=0.587 F1=0.587 support=104
+   SUPPORT          P=0.437 R=0.566 F1=0.493 support=122
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 11, 47]
+   NOT_ENOUGH_INFO  [1, 61, 42]
+   SUPPORT          [21, 32, 69]
+
+[A] gold_evidence_slice: n=182 macro-F1 (SUPPORT+CONTRADICT)=0.3140 accuracy=0.3901
+   CONTRADICT       P=0.087 R=0.033 F1=0.048 support=60
+   NOT_ENOUGH_INFO  P=0.000 R=0.000 F1=0.000 support=0
+   SUPPORT          P=0.595 R=0.566 F1=0.580 support=122
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 11, 47]
+   NOT_ENOUGH_INFO  [0, 0, 0]
+   SUPPORT          [21, 32, 69]
+
+[A] sensitivity_j0.7_matched: n=209 macro-F1 (CONTRADICT+NOT_ENOUGH_INFO+SUPPORT)=0.3761 accuracy=0.4737
+   CONTRADICT       P=0.250 R=0.051 F1=0.085 support=39
+   NOT_ENOUGH_INFO  P=0.526 R=0.500 F1=0.513 support=82
+   SUPPORT          P=0.455 R=0.636 F1=0.531 support=88
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 10, 27]
+   NOT_ENOUGH_INFO  [1, 41, 40]
+   SUPPORT          [5, 27, 56]
+
+[A] sensitivity_j0.7_gold_evidence_slice: n=127 macro-F1 (SUPPORT+CONTRADICT)=0.3710 accuracy=0.4567
+   CONTRADICT       P=0.286 R=0.051 F1=0.087 support=39
+   NOT_ENOUGH_INFO  P=0.000 R=0.000 F1=0.000 support=0
+   SUPPORT          P=0.675 R=0.636 F1=0.655 support=88
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 10, 27]
+   NOT_ENOUGH_INFO  [0, 0, 0]
+   SUPPORT          [5, 27, 56]
+
+[B] primary_matched: n=286 macro-F1 (CONTRADICT+NOT_ENOUGH_INFO+SUPPORT)=0.4988 accuracy=0.6014
+   CONTRADICT       P=0.067 R=0.033 F1=0.044 support=60
+   NOT_ENOUGH_INFO  P=0.884 R=0.808 F1=0.844 support=104
+   SUPPORT          P=0.534 R=0.705 F1=0.608 support=122
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 3, 55]
+   NOT_ENOUGH_INFO  [0, 84, 20]
+   SUPPORT          [28, 8, 86]
+
+[B] gold_evidence_slice: n=182 macro-F1 (SUPPORT+CONTRADICT)=0.3492 accuracy=0.4835
+   CONTRADICT       P=0.067 R=0.033 F1=0.044 support=60
+   NOT_ENOUGH_INFO  P=0.000 R=0.000 F1=0.000 support=0
+   SUPPORT          P=0.610 R=0.705 F1=0.654 support=122
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 3, 55]
+   NOT_ENOUGH_INFO  [0, 0, 0]
+   SUPPORT          [28, 8, 86]
+
+[B] sensitivity_j0.7_matched: n=209 macro-F1 (CONTRADICT+NOT_ENOUGH_INFO+SUPPORT)=0.5334 accuracy=0.6746
+   CONTRADICT       P=0.286 R=0.051 F1=0.087 support=39
+   NOT_ENOUGH_INFO  P=0.863 R=0.768 F1=0.813 support=82
+   SUPPORT          P=0.589 R=0.864 F1=0.700 support=88
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 3, 34]
+   NOT_ENOUGH_INFO  [0, 63, 19]
+   SUPPORT          [5, 7, 76]
+
+[B] sensitivity_j0.7_gold_evidence_slice: n=127 macro-F1 (SUPPORT+CONTRADICT)=0.4273 accuracy=0.6142
+   CONTRADICT       P=0.286 R=0.051 F1=0.087 support=39
+   NOT_ENOUGH_INFO  P=0.000 R=0.000 F1=0.000 support=0
+   SUPPORT          P=0.691 R=0.864 F1=0.768 support=88
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [2, 3, 34]
+   NOT_ENOUGH_INFO  [0, 0, 0]
+   SUPPORT          [5, 7, 76]
+
+[C] primary_matched: n=286 macro-F1 (CONTRADICT+NOT_ENOUGH_INFO+SUPPORT)=0.3650 accuracy=0.4371
+   CONTRADICT       P=0.097 R=0.050 F1=0.066 support=60
+   NOT_ENOUGH_INFO  P=0.576 R=0.548 F1=0.562 support=104
+   SUPPORT          P=0.417 R=0.533 F1=0.468 support=122
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [3, 10, 47]
+   NOT_ENOUGH_INFO  [3, 57, 44]
+   SUPPORT          [25, 32, 65]
+
+[C] gold_evidence_slice: n=182 macro-F1 (SUPPORT+CONTRADICT)=0.3119 accuracy=0.3736
+   CONTRADICT       P=0.107 R=0.050 F1=0.068 support=60
+   NOT_ENOUGH_INFO  P=0.000 R=0.000 F1=0.000 support=0
+   SUPPORT          P=0.580 R=0.533 F1=0.556 support=122
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [3, 10, 47]
+   NOT_ENOUGH_INFO  [0, 0, 0]
+   SUPPORT          [25, 32, 65]
+
+[C] sensitivity_j0.7_matched: n=209 macro-F1 (CONTRADICT+NOT_ENOUGH_INFO+SUPPORT)=0.3703 accuracy=0.4498
+   CONTRADICT       P=0.214 R=0.077 F1=0.113 support=39
+   NOT_ENOUGH_INFO  P=0.513 R=0.488 F1=0.500 support=82
+   SUPPORT          P=0.436 R=0.580 F1=0.498 support=88
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [3, 9, 27]
+   NOT_ENOUGH_INFO  [3, 40, 39]
+   SUPPORT          [8, 29, 51]
+
+[C] sensitivity_j0.7_gold_evidence_slice: n=127 macro-F1 (SUPPORT+CONTRADICT)=0.3672 accuracy=0.4252
+   CONTRADICT       P=0.273 R=0.077 F1=0.120 support=39
+   NOT_ENOUGH_INFO  P=0.000 R=0.000 F1=0.000 support=0
+   SUPPORT          P=0.654 R=0.580 F1=0.614 support=88
+   confusion (rows gold, cols pred), order: ['CONTRADICT', 'NOT_ENOUGH_INFO', 'SUPPORT']
+   CONTRADICT       [3, 9, 27]
+   NOT_ENOUGH_INFO  [0, 0, 0]
+   SUPPORT          [8, 29, 51]
+
+paired macro-F1 differences: {
+ "B-A": {
+  "primary_matched": {
+   "difference": 0.12314158318251223,
+   "ci95_low": 0.07214096171032866,
+   "ci95_high": 0.17829445007489528,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 286,
+   "ci_excludes_zero": true
+  },
+  "gold_evidence_slice": {
+   "difference": 0.035206068012130054,
+   "ci95_low": -0.027496940314347115,
+   "ci95_high": 0.09735003079272041,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 182,
+   "ci_excludes_zero": false
+  },
+  "sensitivity_j0.7_matched": {
+   "difference": 0.15730283561871822,
+   "ci95_low": 0.07763805012795695,
+   "ci95_high": 0.23373152100943265,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 209,
+   "ci_excludes_zero": true
+  },
+  "sensitivity_j0.7_gold_evidence_slice": {
+   "difference": 0.05635300372142471,
+   "ci95_low": -0.0400626912685616,
+   "ci95_high": 0.1535310713817322,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 127,
+   "ci_excludes_zero": false
+  }
+ },
+ "C-A": {
+  "primary_matched": {
+   "difference": -0.010626110706735858,
+   "ci95_low": -0.06222306945289753,
+   "ci95_high": 0.04384674201089097,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 286,
+   "ci_excludes_zero": false
+  },
+  "gold_evidence_slice": {
+   "difference": -0.0021436650600363816,
+   "ci95_low": -0.0629048935425277,
+   "ci95_high": 0.059075112850828636,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 182,
+   "ci_excludes_zero": false
+  },
+  "sensitivity_j0.7_matched": {
+   "difference": -0.005881182467649182,
+   "ci95_low": -0.07552622903459101,
+   "ci95_high": 0.06276795914475679,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 209,
+   "ci_excludes_zero": false
+  },
+  "sensitivity_j0.7_gold_evidence_slice": {
+   "difference": -0.0037347253238737,
+   "ci95_low": -0.0901431793735703,
+   "ci95_high": 0.08523408525238813,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 127,
+   "ci_excludes_zero": false
+  }
+ },
+ "B-C": {
+  "primary_matched": {
+   "difference": 0.13376769388924808,
+   "ci95_low": 0.083031091614819,
+   "ci95_high": 0.1873665680411232,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 286,
+   "ci_excludes_zero": true
+  },
+  "gold_evidence_slice": {
+   "difference": 0.037349733072166436,
+   "ci95_low": -0.015918663512413455,
+   "ci95_high": 0.09023127574377206,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 182,
+   "ci_excludes_zero": false
+  },
+  "sensitivity_j0.7_matched": {
+   "difference": 0.1631840180863674,
+   "ci95_low": 0.09408076589305736,
+   "ci95_high": 0.23525221066663718,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 209,
+   "ci_excludes_zero": true
+  },
+  "sensitivity_j0.7_gold_evidence_slice": {
+   "difference": 0.06008772904529841,
+   "ci95_low": -0.02072436802062199,
+   "ci95_high": 0.14401522670958364,
+   "n_resamples": 2000,
+   "seed": 42,
+   "n_claims": 127,
+   "ci_excludes_zero": false
+  }
+ }
+}
+
+written to: /tmp/scifact-run/repo/results/metrics/eval_20261030T132835Z

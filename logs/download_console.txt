@@ -1,0 +1,44 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0 3042k    0 16988    0     0  21522      0  0:02:24 --:--:--  0:02:24 21503
+  6 3042k    6  203k    0     0   120k      0  0:00:25  0:00:01  0:00:24  120k
+ 98 3042k   98 2990k    0     0  1058k      0  0:00:02  0:00:02 --:--:-- 1058k
+100 3042k  100 3042k    0     0   996k      0  0:00:03  0:00:03 --:--:--  997k
+11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be  data.tar.gz
+._data
+data/
+data/claims_dev.jsonl
+data/cross_validation/
+data/claims_train.jsonl
+data/claims_test.jsonl
+data/corpus.jsonl
+data/cross_validation/._fold_4
+data/cross_validation/fold_4/
+data/cross_validation/fold_3/
+data/cross_validation/fold_2/
+data/cross_validation/fold_5/
+data/cross_validation/._fold_1
+data/cross_validation/fold_1/
+data/cross_validation/fold_1/claims_dev_1.jsonl
+data/cross_validation/fold_1/claims_train_1.jsonl
+data/cross_validation/fold_5/claims_train_5.jsonl
+data/cross_validation/fold_5/claims_dev_5.jsonl
+data/cross_validation/fold_2/claims_dev_2.jsonl
+data/cross_validation/fold_2/claims_train_2.jsonl
+    300 ./data/claims_dev.jsonl
+    300 ./data/claims_test.jsonl
+    809 ./data/claims_train.jsonl
+   5183 ./data/corpus.jsonl
+    222 ./data/cross_validation/fold_1/claims_dev_1.jsonl
+    887 ./data/cross_validation/fold_1/claims_train_1.jsonl
+    222 ./data/cross_validation/fold_2/claims_dev_2.jsonl
+    887 ./data/cross_validation/fold_2/claims_train_2.jsonl
+    222 ./data/cross_validation/fold_3/claims_dev_3.jsonl
+    887 ./data/cross_validation/fold_3/claims_train_3.jsonl
+    222 ./data/cross_validation/fold_4/claims_dev_4.jsonl
+    887 ./data/cross_validation/fold_4/claims_train_4.jsonl
+    221 ./data/cross_validation/fold_5/claims_dev_5.jsonl
+    888 ./data/cross_validation/fold_5/claims_train_5.jsonl
+  12137 total
