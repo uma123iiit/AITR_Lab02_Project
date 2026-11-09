@@ -36,17 +36,44 @@ On matched SciFact development claims, how do claim-only (A), claim + annotated 
 
 On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0.3119. The B-A difference is +0.0352 with 95% paired-bootstrap CI [-0.0275, +0.0974], so the predefined improvement rule is not met. BM25 Recall@5 is 164/182 = 90.11%; retrieval success does not guarantee correct classification. All values are development-set results, not test-set results.
 
-## Repository map
-- `src/scifact_verif/` - data, input formatting, retrieval, classifier, metrics and RQ3 helpers.
-- `scripts/` - download/audit, retrieval, training, evaluation, saved-output audit and RQ3 enrichment/pre-coding.
-- `tests/` - unit/sanity tests.
-- `configs/` - experiment and frozen protocol/codebook.
-- `results/` - timestamped actual metrics, predictions, retrieval ranks, tables and figures.
-- `logs/` - actual console outputs, protocol changes, environment and audit logs.
-- `paper/` - LaTeX manuscript source, bibliography, citation audit and reference notes. The compiled PDF and figure image assets are not part of the current GitHub upload yet.
-- `data/README.md` - dataset download link, acquisition, split and component-license provenance; raw data are excluded.
-- `research_decisions.md`, `review_to_experiment_trace.md`, `baseline_validation.md`, `ai_assistance_log.md` - research provenance and verification.
-- `FINAL_STUDENT_REVIEW_CHECKLIST.md` - submission, reproducibility and RQ3 student-review checklist.
+## Repository structure
+
+The repository is organised by responsibility:
+
+```text
+POSTMIDSEMRESEARCH/
+├── README.md
+├── requirements.txt
+├── requirements.lock.txt
+├── configs/                 # experiment settings and frozen protocol/codebook
+├── data/
+│   └── README.md            # SciFact access, format, provenance and licence notes
+├── src/
+│   └── scifact_verif/       # reusable data, retrieval, verifier and metric modules
+├── scripts/                 # download, audit, training, evaluation and analysis entrypoints
+├── tests/                   # unit and focused validation tests
+├── results/                 # archived metrics, predictions, audits and RQ3 materials
+├── logs/                    # recorded command output and audit logs
+├── paper/                   # LaTeX source, bibliography and citation audit
+├── research_decisions.md    # literature-to-experiment decisions
+├── review_to_experiment_trace.md
+├── baseline_validation.md   # baseline checks and recorded deviations
+├── ai_assistance_log.md     # significant AI assistance and verification decisions
+├── phase1_gap_matrix.md
+├── phase2_dataset_protocol.md
+├── phase3_baseline_debug_audit.md
+├── phase4_results_discussion.md
+├── phase5_peer_review.md
+├── phase6_accountability_review.md
+├── protocol_status_reconciliation.md
+├── reproducibility_audit.md
+├── demo_5min.md
+├── viva_questions_and_answers.md
+└── FINAL_STUDENT_REVIEW_CHECKLIST.md
+```
+
+The structure above describes the directories and key documents currently used by the project. Raw SciFact data, fitted private model objects and unverified notebook outputs are not included. The executable workflow is organised around the Python modules, command-line scripts and tests; no notebook-based results are claimed.
+
 
 ## Reproduction (test required on a clean machine)
 Use the recorded Python 3.11.2 CPU environment. Raw dataset files are not distributed.
