@@ -26,7 +26,7 @@ On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0
 - `configs/` - experiment and frozen protocol/codebook.
 - `results/` - timestamped actual metrics, predictions, retrieval ranks, tables and figures.
 - `logs/` - actual console outputs, protocol changes, environment and audit logs.
-- `paper/` - LaTeX source, bibliography, figures and compiled PDF.
+- `paper/` - LaTeX manuscript source, bibliography, citation audit and reference notes. The compiled PDF and figure image assets are not part of the current GitHub upload yet.
 - `data/README.md` - acquisition, split and component-license provenance; raw data are excluded.
 - `research_decisions.md`, `review_to_experiment_trace.md`, `baseline_validation.md`, `ai_assistance_log.md` - research provenance and verification.
 
@@ -76,3 +76,6 @@ This is a controlled comparison with a simple lexical verifier, not a new neural
 
 ## Citation
 The primary dataset paper is Wadden et al. (2020), *Fact or Fiction: Verifying Scientific Claims*, EMNLP. The full bibliography is in `paper/references.bib`.
+
+## GitHub upload status
+The repository currently includes the core Python source modules, scripts, tests, frozen configurations, research/provenance documents, LaTeX manuscript source, bibliography, selected archived result tables and selected audit logs. The binary PDF/PNG assets, full raw prediction/retrieval CSV archive, and some remaining log files are not yet uploaded. Raw SciFact data remain intentionally excluded. Do not interpret this as a complete mirror of the prepared ZIP until the remaining assets are added.
