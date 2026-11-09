@@ -1,0 +1,15 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: results.csv>
+index,condition,slice,n,macro_f1,macro_f1_over,accuracy,f1_CONTRADICT,f1_NOT_ENOUGH_INFO,f1_SUPPORT,note,source,source_sha256
+0,A,primary_matched,286,0.3757,CONTRADICT+NOT_ENOUGH_INFO+SUPPORT,0.4615,0.0476,0.5865,0.4929,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+1,A,gold_evidence_slice,182,0.314,SUPPORT+CONTRADICT,0.3901,0.0482,0.0,0.5798,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+2,A,sensitivity_j0.7_matched,209,0.3761,CONTRADICT+NOT_ENOUGH_INFO+SUPPORT,0.4737,0.0851,0.5125,0.5308,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+3,A,sensitivity_j0.7_gold_evidence_slice,127,0.371,SUPPORT+CONTRADICT,0.4567,0.087,0.0,0.655,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+4,B,primary_matched,286,0.4988,CONTRADICT+NOT_ENOUGH_INFO+SUPPORT,0.6014,0.0444,0.8442,0.6078,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+5,B,gold_evidence_slice,182,0.3492,SUPPORT+CONTRADICT,0.4835,0.0444,0.0,0.654,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+6,B,sensitivity_j0.7_matched,209,0.5334,CONTRADICT+NOT_ENOUGH_INFO+SUPPORT,0.6746,0.087,0.8129,0.7005,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+7,B,sensitivity_j0.7_gold_evidence_slice,127,0.4273,SUPPORT+CONTRADICT,0.6142,0.087,0.0,0.7677,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+8,C,primary_matched,286,0.365,CONTRADICT+NOT_ENOUGH_INFO+SUPPORT,0.4371,0.0659,0.5616,0.4676,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+9,C,gold_evidence_slice,182,0.3119,SUPPORT+CONTRADICT,0.3736,0.0682,0.0,0.5556,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+10,C,sensitivity_j0.7_matched,209,0.3703,CONTRADICT+NOT_ENOUGH_INFO+SUPPORT,0.4498,0.1132,0.5,0.4976,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+11,C,sensitivity_j0.7_gold_evidence_slice,127,0.3672,SUPPORT+CONTRADICT,0.4252,0.12,0.0,0.6145,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3

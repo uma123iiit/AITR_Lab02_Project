@@ -1,0 +1,15 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: results_paired_differences.csv>
+index,comparison,slice,n_claims,difference_macro_f1,ci95_low,ci95_high,ci_excludes_zero,resamples,seed,note,source,source_sha256
+0,B-A,primary_matched,286,0.1231,0.0721,0.1783,True,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+1,B-A,gold_evidence_slice,182,0.0352,-0.0275,0.0974,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+2,B-A,sensitivity_j0.7_matched,209,0.1573,0.0776,0.2337,True,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+3,B-A,sensitivity_j0.7_gold_evidence_slice,127,0.0564,-0.0401,0.1535,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+4,C-A,primary_matched,286,-0.0106,-0.0622,0.0438,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+5,C-A,gold_evidence_slice,182,-0.0021,-0.0629,0.0591,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+6,C-A,sensitivity_j0.7_matched,209,-0.0059,-0.0755,0.0628,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+7,C-A,sensitivity_j0.7_gold_evidence_slice,127,-0.0037,-0.0901,0.0852,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+8,B-C,primary_matched,286,0.1338,0.083,0.1874,True,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+9,B-C,gold_evidence_slice,182,0.0373,-0.0159,0.0902,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+10,B-C,sensitivity_j0.7_matched,209,0.1632,0.0941,0.2353,True,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3
+11,B-C,sensitivity_j0.7_gold_evidence_slice,127,0.0601,-0.0207,0.144,False,2000,42,"dev set, frozen primary run, not test",results/metrics/eval_20261030T132835Z/metrics.json,77298a2ec831a52cf35db00482e503cba7c129aff523404437e6c18287dfecc3

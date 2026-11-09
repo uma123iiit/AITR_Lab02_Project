@@ -1,0 +1,107 @@
+{
+  "note": "Development set, gold-evidence slice, BM25 document-level hit@5. Descriptive; groups are unequal in size.",
+  "n": 182,
+  "groups": {
+    "hit": {
+      "n": 164,
+      "gold_label_counts": {
+        "SUPPORT": 115,
+        "CONTRADICT": 49
+      },
+      "accuracy": {
+        "A": {
+          "correct": 66,
+          "n": 164,
+          "accuracy": 0.4024390243902439,
+          "wilson95": [
+            0.3304480764064882,
+            0.47889597179133647
+          ]
+        },
+        "B": {
+          "correct": 82,
+          "n": 164,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.4243556892194609,
+            0.5756443107805391
+          ]
+        },
+        "C": {
+          "correct": 65,
+          "n": 164,
+          "accuracy": 0.39634146341463417,
+          "wilson95": [
+            0.3246751541915624,
+            0.4727528970186263
+          ]
+        }
+      },
+      "correct_by_gold_label": {
+        "CONTRADICT": {
+          "n": 49,
+          "A": 2,
+          "B": 2,
+          "C": 3
+        },
+        "SUPPORT": {
+          "n": 115,
+          "A": 64,
+          "B": 80,
+          "C": 62
+        }
+      }
+    },
+    "miss": {
+      "n": 18,
+      "gold_label_counts": {
+        "CONTRADICT": 11,
+        "SUPPORT": 7
+      },
+      "accuracy": {
+        "A": {
+          "correct": 5,
+          "n": 18,
+          "accuracy": 0.2777777777777778,
+          "wilson95": [
+            0.12499569146355474,
+            0.5087307754619452
+          ]
+        },
+        "B": {
+          "correct": 6,
+          "n": 18,
+          "accuracy": 0.3333333333333333,
+          "wilson95": [
+            0.1627855436366286,
+            0.5625093065574964
+          ]
+        },
+        "C": {
+          "correct": 3,
+          "n": 18,
+          "accuracy": 0.16666666666666666,
+          "wilson95": [
+            0.05836470400465757,
+            0.39222499638359243
+          ]
+        }
+      },
+      "correct_by_gold_label": {
+        "CONTRADICT": {
+          "n": 11,
+          "A": 0,
+          "B": 0,
+          "C": 0
+        },
+        "SUPPORT": {
+          "n": 7,
+          "A": 5,
+          "B": 6,
+          "C": 3
+        }
+      }
+    }
+  },
+  "exploratory_fisher_exact_p_C_hit_vs_miss": 0.07229433095745492
+}

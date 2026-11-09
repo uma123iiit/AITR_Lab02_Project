@@ -1,0 +1,154 @@
+{
+  "data_dir": "/tmp/scifact-run/repo/data/raw/scifact/data",
+  "corpus_n": 5183,
+  "corpus_doc_id_types": [
+    "int"
+  ],
+  "file_sha256": {
+    "corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+    "claims_train.jsonl": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0",
+    "claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+    "claims_test.jsonl": "558930d75215c73f84a28fe538307d6d397c9de1ec7239514cf45f80d75d2ca3"
+  },
+  "splits": {
+    "train": {
+      "n": 809,
+      "id_types": [
+        "int"
+      ],
+      "duplicate_ids": 0,
+      "keys": {
+        "id": 809,
+        "claim": 809,
+        "evidence": 809,
+        "cited_doc_ids": 809
+      },
+      "gold_label_counts": {
+        "NOT_ENOUGH_INFO": 304,
+        "CONTRADICT": 173,
+        "SUPPORT": 332
+      },
+      "raw_label_values_seen": [
+        "CONTRADICT",
+        "SUPPORT"
+      ],
+      "with_nonempty_evidence": 505,
+      "evidence_doc_ids_not_in_corpus": 0,
+      "evidence_key_types": [
+        "str"
+      ],
+      "bad_sentence_index_claims": 0
+    },
+    "dev": {
+      "n": 300,
+      "id_types": [
+        "int"
+      ],
+      "duplicate_ids": 0,
+      "keys": {
+        "id": 300,
+        "claim": 300,
+        "evidence": 300,
+        "cited_doc_ids": 300
+      },
+      "gold_label_counts": {
+        "NOT_ENOUGH_INFO": 112,
+        "SUPPORT": 124,
+        "CONTRADICT": 64
+      },
+      "raw_label_values_seen": [
+        "CONTRADICT",
+        "SUPPORT"
+      ],
+      "with_nonempty_evidence": 188,
+      "evidence_doc_ids_not_in_corpus": 0,
+      "evidence_key_types": [
+        "str"
+      ],
+      "bad_sentence_index_claims": 0
+    },
+    "test": {
+      "n": 300,
+      "id_types": [
+        "int"
+      ],
+      "duplicate_ids": 0,
+      "keys": {
+        "id": 300,
+        "claim": 300
+      }
+    }
+  },
+  "near_duplicates_train_dev": [
+    {
+      "dev_id": 294,
+      "train_id": 293,
+      "jaccard": 0.917
+    },
+    {
+      "dev_id": 362,
+      "train_id": 361,
+      "jaccard": 0.917
+    },
+    {
+      "dev_id": 589,
+      "train_id": 590,
+      "jaccard": 0.905
+    },
+    {
+      "dev_id": 637,
+      "train_id": 638,
+      "jaccard": 0.929
+    },
+    {
+      "dev_id": 718,
+      "train_id": 717,
+      "jaccard": 0.9
+    },
+    {
+      "dev_id": 775,
+      "train_id": 774,
+      "jaccard": 0.941
+    },
+    {
+      "dev_id": 814,
+      "train_id": 813,
+      "jaccard": 0.913
+    },
+    {
+      "dev_id": 870,
+      "train_id": 871,
+      "jaccard": 1.0
+    },
+    {
+      "dev_id": 971,
+      "train_id": 972,
+      "jaccard": 0.905
+    },
+    {
+      "dev_id": 1029,
+      "train_id": 1028,
+      "jaccard": 0.905
+    },
+    {
+      "dev_id": 1270,
+      "train_id": 1269,
+      "jaccard": 1.0
+    },
+    {
+      "dev_id": 1292,
+      "train_id": 1291,
+      "jaccard": 1.0
+    },
+    {
+      "dev_id": 1359,
+      "train_id": 1360,
+      "jaccard": 0.9
+    },
+    {
+      "dev_id": 1395,
+      "train_id": 1397,
+      "jaccard": 0.909
+    }
+  ]
+}

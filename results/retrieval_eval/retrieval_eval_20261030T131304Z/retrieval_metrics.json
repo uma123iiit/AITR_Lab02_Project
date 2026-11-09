@@ -1,0 +1,83 @@
+{
+  "note": "Development-set retrieval evaluation; claims with >=1 gold evidence doc among the frozen matched set. Document-level hit, not sentence-level sufficiency.",
+  "ranks_dir": "results/retrieval/retrieval_20261030T131217Z",
+  "retrieval_run_id": "retrieval_20261030T131217Z",
+  "corpus_sha256": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+  "denominator": 182,
+  "results": {
+    "bm25": {
+      "recall_at_5": 0.9010989010989011,
+      "hits": 164,
+      "denominator": 182,
+      "wilson95": [
+        0.8490929895855591,
+        0.9365222870801605
+      ],
+      "by_gold_label": {
+        "SUPPORT": {
+          "hits": 115,
+          "n": 122,
+          "recall_at_5": 0.9426229508196722
+        },
+        "CONTRADICT": {
+          "hits": 49,
+          "n": 60,
+          "recall_at_5": 0.8166666666666667
+        }
+      },
+      "first_gold_rank_counts_among_hits": {
+        "1": 128,
+        "2": 17,
+        "3": 7,
+        "4": 5,
+        "5": 7
+      }
+    },
+    "tfidf": {
+      "recall_at_5": 0.8296703296703297,
+      "hits": 151,
+      "denominator": 182,
+      "wilson95": [
+        0.7683793041826431,
+        0.8773318821179484
+      ],
+      "by_gold_label": {
+        "SUPPORT": {
+          "hits": 106,
+          "n": 122,
+          "recall_at_5": 0.8688524590163934
+        },
+        "CONTRADICT": {
+          "hits": 45,
+          "n": 60,
+          "recall_at_5": 0.75
+        }
+      },
+      "first_gold_rank_counts_among_hits": {
+        "1": 110,
+        "2": 20,
+        "3": 11,
+        "4": 6,
+        "5": 4
+      }
+    }
+  },
+  "hit_overlap": {
+    "both": 148,
+    "bm25_only": 16,
+    "tfidf_only": 3,
+    "neither": 15
+  },
+  "runtime": {
+    "bm25": {
+      "index_seconds": 0.613,
+      "search_seconds": 25.768,
+      "ms_per_query": 23.532
+    },
+    "tfidf": {
+      "index_seconds": 3.099,
+      "search_seconds": 9.609,
+      "ms_per_query": 8.775
+    }
+  }
+}

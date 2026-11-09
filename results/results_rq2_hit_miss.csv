@@ -1,0 +1,9 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: results_rq2_hit_miss.csv>
+index,bm25_hit_group,group_n,condition,correct,accuracy,wilson95_low,wilson95_high,gold_label_counts,source,source_sha256
+0,hit,164,A,66,0.4024,0.3304,0.4789,"{""CONTRADICT"": 49, ""SUPPORT"": 115}",results/metrics/rq2_hit_miss_20261030T140935Z.json,439b5bc077c9af5e9fcc72246805d84a8f45adddd0045bd7ee394ae575cc82fa
+1,hit,164,B,82,0.5,0.4244,0.5756,"{""CONTRADICT"": 49, ""SUPPORT"": 115}",results/metrics/rq2_hit_miss_20261030T140935Z.json,439b5bc077c9af5e9fcc72246805d84a8f45adddd0045bd7ee394ae575cc82fa
+2,hit,164,C,65,0.3963,0.3247,0.4728,"{""CONTRADICT"": 49, ""SUPPORT"": 115}",results/metrics/rq2_hit_miss_20261030T140935Z.json,439b5bc077c9af5e9fcc72246805d84a8f45adddd0045bd7ee394ae575cc82fa
+3,miss,18,A,5,0.2778,0.125,0.5087,"{""CONTRADICT"": 11, ""SUPPORT"": 7}",results/metrics/rq2_hit_miss_20261030T140935Z.json,439b5bc077c9af5e9fcc72246805d84a8f45adddd0045bd7ee394ae575cc82fa
+4,miss,18,B,6,0.3333,0.1628,0.5625,"{""CONTRADICT"": 11, ""SUPPORT"": 7}",results/metrics/rq2_hit_miss_20261030T140935Z.json,439b5bc077c9af5e9fcc72246805d84a8f45adddd0045bd7ee394ae575cc82fa
+5,miss,18,C,3,0.1667,0.0584,0.3922,"{""CONTRADICT"": 11, ""SUPPORT"": 7}",results/metrics/rq2_hit_miss_20261030T140935Z.json,439b5bc077c9af5e9fcc72246805d84a8f45adddd0045bd7ee394ae575cc82fa

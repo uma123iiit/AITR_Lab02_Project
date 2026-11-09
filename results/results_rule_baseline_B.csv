@@ -1,0 +1,7 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: results_rule_baseline_B.csv>
+index,slice,n,rule_macro_f1,rule_accuracy,B_macro_f1,B_accuracy,B_minus_rule,ci95_low,ci95_high,rule,source,source_sha256
+0,primary_matched,286,0.6009,0.7902,0.4988,0.6014,-0.1021,-0.1399,-0.0639,NEI iff b_evidence_empty else SUPPORT,results/metrics/rule_baseline_B_20261030T132905Z.json,6d4e4cd2a976d20ac1cfdc18002e313d46ef02fe8c75966295edd27ed6d23dc6
+1,gold_evidence_slice,182,0.4013,0.6703,0.3492,0.4835,-0.0521,-0.0927,-0.0057,NEI iff b_evidence_empty else SUPPORT,results/metrics/rule_baseline_B_20261030T132905Z.json,6d4e4cd2a976d20ac1cfdc18002e313d46ef02fe8c75966295edd27ed6d23dc6
+2,sensitivity_j0.7_matched,209,0.6062,0.8134,0.5334,0.6746,-0.0728,-0.1265,-0.0192,NEI iff b_evidence_empty else SUPPORT,results/metrics/rule_baseline_B_20261030T132905Z.json,6d4e4cd2a976d20ac1cfdc18002e313d46ef02fe8c75966295edd27ed6d23dc6
+3,sensitivity_j0.7_gold_evidence_slice,127,0.4093,0.6929,0.4273,0.6142,0.018,-0.0396,0.0886,NEI iff b_evidence_empty else SUPPORT,results/metrics/rule_baseline_B_20261030T132905Z.json,6d4e4cd2a976d20ac1cfdc18002e313d46ef02fe8c75966295edd27ed6d23dc6

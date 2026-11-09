@@ -1,0 +1,48 @@
+{
+  "sample_rows": 50,
+  "unique_condition_claim_pairs": 50,
+  "unique_claim_ids": 45,
+  "strata": {
+    "A": 17,
+    "B": 17,
+    "C": 16
+  },
+  "coding_basis": "AI-assisted preliminary text review of claim text plus relevant gold/retrieved abstracts from public mirrors; frozen codebook and PC-006 applied.",
+  "category_counts": {
+    "AMBIGUOUS_ANNOTATION": 14,
+    "LABEL_DECISION_ERROR": 31,
+    "NO_EVIDENCE_SEEN": 1,
+    "OTHER_UNCERTAIN": 3,
+    "RETRIEVAL_MISS": 1
+  },
+  "category_by_condition": {
+    "A": {
+      "AMBIGUOUS_ANNOTATION": 5,
+      "LABEL_DECISION_ERROR": 10,
+      "NO_EVIDENCE_SEEN": 0,
+      "OTHER_UNCERTAIN": 2,
+      "RETRIEVAL_MISS": 0
+    },
+    "B": {
+      "AMBIGUOUS_ANNOTATION": 3,
+      "LABEL_DECISION_ERROR": 13,
+      "NO_EVIDENCE_SEEN": 1,
+      "OTHER_UNCERTAIN": 0,
+      "RETRIEVAL_MISS": 0
+    },
+    "C": {
+      "AMBIGUOUS_ANNOTATION": 6,
+      "LABEL_DECISION_ERROR": 8,
+      "NO_EVIDENCE_SEEN": 0,
+      "OTHER_UNCERTAIN": 1,
+      "RETRIEVAL_MISS": 1
+    }
+  },
+  "metadata_deterministic": {
+    "NO_EVIDENCE_SEEN": 1,
+    "RETRIEVAL_MISS": 1
+  },
+  "text_review_preliminary": 48,
+  "inter_annotator_reliability": "NOT CALCULATED; only one AI-assisted preliminary coder pass; student review and optional independent second coder remain necessary.",
+  "status": "PRELIMINARY; NOT HUMAN-FINAL; exact local corpus snapshot not matched cryptographically to public BEIR/SciFact mirror."
+}

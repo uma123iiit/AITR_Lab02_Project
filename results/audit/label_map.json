@@ -1,0 +1,9 @@
+{
+  "rule": "no 'evidence' key -> unlabeled; empty evidence dict -> NOT_ENOUGH_INFO; one distinct raw label (SUPPORT|CONTRADICT) -> that label; mixed or unknown -> excluded",
+  "labels_in_train": [
+    "CONTRADICT",
+    "NOT_ENOUGH_INFO",
+    "SUPPORT"
+  ],
+  "class_order_note": "alphabetical, equal to sklearn LogisticRegression.classes_; verify against clf.classes_ at fit time and save in run metadata"
+}

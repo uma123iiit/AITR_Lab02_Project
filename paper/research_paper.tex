@@ -1,0 +1,199 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=0.78in]{geometry}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage[strings]{underscore}
+\setlength{\parindent}{1em}\setlength{\parskip}{3pt}
+\setlength{\parskip}{2pt}
+\setlist[itemize]{nosep,leftmargin=*}
+\title{Evidence Availability and Retrieval in Scientific Claim Verification: A Matched SciFact Development-Set Study}\hypersetup{pdftitle={Evidence Availability and Retrieval in Scientific Claim Verification: A Matched SciFact Development-Set Study},pdfauthor={Umakant Singh}}
+\author{Umakant Singh\\\texttt{Enrollment Number: MNS2026009}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Scientific claim verification depends on both retrieving relevant evidence and interpreting it correctly. This study compares three evidence-input conditions on a matched subset of the SciFact development split: claim-only (A), claim plus annotated gold evidence (B), and claim plus BM25 top-five retrieved abstracts (C). Each condition uses a separately fitted TF--IDF plus logistic-regression verifier trained on the same training split. The archived frozen run contains 286 matched development claims, of which 182 have annotated gold evidence. On all 286 claims, macro-F1 is 0.3757 (A), 0.4988 (B), and 0.3650 (C). However, B's all-claim score is confounded because NOT-ENOUGH-INFO claims have empty evidence, allowing an evidence-presence shortcut. On the 182-claim gold-evidence slice, B reaches macro-F1 0.3492 versus 0.3140 for A; the paired difference is +0.0352 with a 95\% bootstrap interval [-0.0275, 0.0974], which does not satisfy the predeclared improvement rule. BM25 Recall@5 is 90.11\%, exceeding TF--IDF retrieval at 82.97\%, yet C does not improve over A. A 50-case error sample was drawn for a prespecified codebook. A separate AI-assisted preliminary text review generated codes for all 50 rows (48 text-based judgments and two deterministic metadata assignments), but the public text mirrors are not checksum-matched to the historical local corpus and all rows require student verification; no final taxonomy findings are claimed. The results support a cautious conclusion: document retrieval success alone does not ensure correct scientific-claim classification, and the tested lexical verifier remains weak, especially for CONTRADICT claims.
+\end{abstract}
+
+\section{Introduction}
+Scientific claims often require evidence from specialized research literature. A verifier must identify relevant abstracts and determine whether their findings support, contradict, or fail to resolve a claim. SciFact formalizes this task with expert-written claims, evidence-containing abstracts and rationale annotations \citep{wadden2020fact}. Retrieval and label prediction are related but distinct stages: a relevant document can be retrieved while its relationship to the claim is still misclassified.
+
+This study asks whether the evidence supplied to a lightweight verifier changes its performance under matched development-set conditions. Three conditions are examined: claim-only, claim plus annotated gold evidence, and claim plus top-five BM25-retrieved abstracts. The intent is a controlled course-level comparison with an auditable per-claim record, not a new verification architecture or a first-of-kind claim. This boundary matters because CliVER already evaluates scientific claim verification, including label prediction on SciFact and CoVERt; the paper’s Open and Oracle settings apply to a separate clinician-claim evaluation \citep{liu2024cliver}. 
+
+The study also separates retrieval from classification. Retrieval Recall@5 measures whether at least one annotated gold document is found; macro-F1 measures whether the verifier predicts the class. These metrics answer different questions. The project uses CPU-friendly TF--IDF and logistic regression under a limited-compute constraint, while preserving per-claim predictions, run metadata and a frozen protocol.
+
+\section{Related Work}
+Wadden et al. introduced SciFact as a scientific claim-verification benchmark requiring evidence selection and rationale identification \citep{wadden2020fact}. Their task motivates evaluation of document retrieval and verdict prediction as distinct capabilities. Liu et al. proposed CliVER, an end-to-end retrieval-augmented scientific claim-verification system, and evaluated label prediction on SciFact and CoVERt; they also examined clinician-claim verification under Open and Oracle settings \citep{liu2024cliver}. Accordingly, comparing oracle and retrieved evidence is not itself claimed as novel in this work.
+
+Other evaluation frameworks provide adjacent concepts rather than drop-in baselines. FACTSCORE decomposes long-form generated text into atomic facts and estimates the fraction supported by a knowledge source \citep{min2023factscore}. ALCE evaluates citation-enabled generation along fluency, correctness and citation-quality dimensions \citep{gao2023alce}. RAGAs separates retrieval-context and generation-related dimensions for RAG evaluation \citep{es2024ragas}. These methods motivate fine-grained support analysis and separating retrieval quality from downstream correctness, but their tasks and metrics are not numerically comparable to SciFact three-way classification.
+
+RAV emphasizes the importance of retrieval quality in fact verification on FEVER \citep{zheng2024rav}, while Chen et al. study realistic evidence retrieval for complex political claims using temporally constrained web evidence \citep{chen2024complex}. Recent 2026 preprints also investigate retrieval utility and taxonomy-based error diagnosis in biomedical or medical factuality settings \citep{deka2026retrieval,huang2026taxonomy}; they are treated as emerging related work, not established baselines. BM25 is used as a lexical retrieval method, following the probabilistic relevance framework \citep{robertson2009bm25}, and TF--IDF/logistic regression are implemented with scikit-learn tools \citep{pedregosa2011sklearn}.
+
+\section{Research Questions}
+\textbf{RQ1:} On the same eligible SciFact development claims, how do claim-only (A), claim plus gold evidence (B), and claim plus retrieved evidence (C) affect three-way verification performance?
+
+\textbf{RQ2:} How often does top-five retrieval include at least one annotated gold evidence document, and how does hit/miss status relate to downstream correctness?
+
+\textbf{RQ3:} Which prespecified error categories appear in each condition? A 50-case error sample and frozen codebook were created. A separate AI-assisted preliminary review has provisional codes for all rows, but the text sources are public mirrors not checksum-matched to the historical corpus; student verification is required, so this manuscript reports no final taxonomy analysis or agreement statistic.
+
+The primary RQ1 metric is macro-F1. The predeclared practical-effect reference is +0.03 absolute macro-F1; an improvement is supported only when the estimated gain is at least +0.03 and its 95\% paired-bootstrap confidence interval excludes zero. Hypotheses that B exceeds A and C approaches B are treated as testable expectations, not findings.
+
+\section{Data and Experimental Protocol}
+\subsection{Dataset and partitions}
+The archived audit records 809 training claims, 300 development claims and 5,183 corpus documents. The official test split contains 300 claims without public labels and was not used for metric evaluation. The official repository describes the train/dev/test files and notes that test labels are not public; test evaluation is directed to the benchmark leaderboard \citep{wadden2020fact}. The primary evaluation uses the development split and is named a development-set evaluation, not a test result.
+
+Fourteen development claims with train twins at token-set Jaccard similarity at least 0.9 were held out to reduce near-duplicate leakage. This leaves 286 matched claims: 60 CONTRADICT, 104 NOT-ENOUGH-INFO and 122 SUPPORT. Of these, 182 have annotated gold evidence (60 CONTRADICT and 122 SUPPORT). A sensitivity analysis at a stricter Jaccard threshold of 0.7 leaves 209 matched claims and 127 with gold evidence.
+
+\subsection{Evidence conditions and verifier}
+Condition A receives only the claim. Condition B receives the claim and the first annotated rationale set per evidence document, in file order. NOT-ENOUGH-INFO claims have empty gold evidence in B; therefore, B is an oracle condition only on the 182-claim gold-evidence slice. Condition C receives the claim and title-plus-abstract text from the top five documents returned by BM25. Gold IDs and labels are used only for post-hoc retrieval scoring, not to rank candidates.
+
+Each condition is trained as a separate TF--IDF plus logistic-regression model using the same training claims and a fixed algorithm family. Settings are unigram/bigram TF--IDF, min\_df=1, maximum 100,000 features, LogisticRegression with $C=1$, lbfgs, maximum 2,000 iterations, random seed 42, no class weighting and argmax prediction. The vocabulary is fit on training material only. The class order is CONTRADICT, NOT\_ENOUGH\_INFO and SUPPORT.
+
+BM25 uses rank-bm25 0.2.2 with $k_1=1.5$, $b=0.75$, $\epsilon=0.25$, lowercase `\\w+` tokenization, top-$k=5$ and ascending numeric document ID for score ties. TF--IDF cosine retrieval is a second retrieval comparator. We do not claim an intervention on one frozen model: separate condition-specific models are fitted using the corresponding condition-specific training inputs, so results describe the end-to-end condition pipeline.
+
+\subsection{Metrics and uncertainty}
+Classification reports accuracy, macro-F1, per-class precision/recall/F1 and confusion matrices. Paired differences B-A, C-A and B-C are estimated by 2,000 claim-level bootstrap resamples with seed 42 and percentile 95\% intervals. Retrieval uses document-level Recall@5 over the 182 evidence-eligible claims; a hit means at least one annotated gold evidence document appears in the retrieved top five.
+
+
+\section{Data Audit and Protocol Rationale}
+\subsection{Why the development split is used}
+The course project is evaluated on the official development split because the labelled test set is not publicly distributed in the benchmark release. The experiment therefore makes no test-set or leaderboard claim. The archived data audit reports 809 labelled training examples, 300 development examples, and 5,183 abstracts in the corpus. The primary evaluation uses a 286-claim subset after a prespecified near-duplicate hold-out. The 14 excluded development claims have training counterparts at token-set Jaccard similarity of at least 0.90. The separate threshold-0.70 sensitivity analysis is not substituted for the primary analysis; it is reported as a robustness check with a different sample size.
+
+The class distribution in the primary matched set is 60 CONTRADICT, 104 NOT\_ENOUGH\_INFO, and 122 SUPPORT. The 182-claim gold-evidence slice contains 60 CONTRADICT and 122 SUPPORT claims. It contains no NOT\_ENOUGH\_INFO class by construction. Accordingly, its macro-F1 is a two-class average, not the same estimand as the three-class macro-F1 on all matched claims. This distinction is essential when interpreting the tables.
+
+\subsection{Label and evidence construction}
+The archived label mapping interprets an empty evidence annotation as NOT\_ENOUGH\_INFO, one distinct SUPPORT or CONTRADICT annotation as that label, and missing evidence keys as an unlabelled record. Mixed or unknown mappings are excluded. The mapping is recorded in the audit outputs and should be rechecked against the exact raw dataset schema on a fresh acquisition. Claim and document identifiers are reconciled before matching the conditions. The retrieval evaluation excludes claims without annotated gold evidence from its denominator; those claims are not silently counted as retrieval failures.
+
+For condition B, the input uses the first annotated rationale set per document in file order, following a logged protocol correction. An independent audit had identified that 75 of the 182 evidence-eligible matched claims have multiple rationale sets in at least one document. Selecting the first set is therefore a consequential operational choice, not an innocuous formatting step. The results should not be generalized to union-of-rationales or sentence-level evidence aggregation without a new ablation.
+
+\subsection{Model and retrieval controls}
+Each of A, B, and C is trained as a separate model using the same training claim identifiers, vectorizer family, logistic-regression family, random seed, and core hyperparameters. This is not the same as taking one fitted classifier and changing only its evaluation-time evidence. The study therefore compares end-to-end condition-specific pipelines. Differences may reflect the changed training representation as well as the changed evidence at inference. The study avoids a causal claim that evidence availability alone caused the score differences.
+
+The vectorizer uses word unigrams and bigrams, min\_df=1, L2 normalization, and a maximum of 100,000 features. Logistic regression uses C=1, the lbfgs solver, at most 2,000 iterations, no class weighting, and argmax class selection. The vocabulary is fitted on training data only. An independent refit reported a maximum absolute probability difference of approximately $5\times10^{-9}$ against the saved condition-A probabilities, within the expected effect of saving probabilities to eight decimal places. The independent vocabulary check found 9,018 terms from training only, compared with 10,957 if train and development material were combined; this check would detect fitting the vocabulary on development data.
+
+BM25 uses rank-bm25 0.2.2 with $k_1=1.5$, $b=0.75$, and $\epsilon=0.25$. Queries are lowercased and tokenized with the recorded word-character pattern; no stop-word removal or stemming is applied. The top five documents are concatenated in ranked order with title and abstract text. A separate TF--IDF cosine retriever uses the same corpus and query set. Ties are resolved by ascending numeric document identifier. Gold evidence identifiers are used only after retrieval to assess recall.
+
+\subsection{Validation checks and their scope}
+The timestamped independent audit reports 12 PASS checks, four WARN checks, two INFO checks and zero FAIL checks. Checks include agreement of train/development label counts with the SciFact paper, corpus size, absence of invalid evidence-document references, recomputation of metrics from saved predictions, independent refitting of condition A, train-only vocabulary fitting, independent BM25 spot-checking, retrieval recall recomputation and hash consistency between configurations and outputs. The audit is useful evidence that the saved files are internally consistent. It is not proof that every modeling choice matches the official SciFact system, and it does not turn this TF--IDF implementation into a reproduction of the published neural baseline.
+
+\section{Additional Results and Diagnostics}
+\subsection{Per-class performance}
+The three-way results show a systematic weakness on CONTRADICT. On the 286-claim matched set, its F1 is 0.0476 for A, 0.0444 for B and 0.0659 for C, while SUPPORT F1 is 0.4929, 0.6078 and 0.4676 respectively. Condition B's strong NOT\_ENOUGH\_INFO F1 of 0.8442 is consistent with its empty-evidence shortcut and must not be interpreted as evidence-grounded reasoning. Table~\ref{tab:classf1} records all three class scores so the aggregate macro-F1 cannot conceal the imbalance.
+
+\begin{table}[ht]
+\centering\small
+\caption{Per-class F1 on all 286 matched development claims.}
+\label{tab:classf1}
+\begin{tabular}{lrrr}
+\toprule
+Class & A & B & C\\
+\midrule
+CONTRADICT & 0.0476 & 0.0444 & 0.0659\\
+NOT ENOUGH INFO & 0.5865 & 0.8442 & 0.5616\\
+SUPPORT & 0.4929 & 0.6078 & 0.4676\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Paired uncertainty}
+The bootstrap resamples claims, preserving the pairing of conditions within each sampled claim. For each resample, the corresponding macro-F1 difference is recalculated; the saved output uses 2,000 resamples, a fixed seed of 42, and percentile 95\% intervals. On all 286 claims, B-A is +0.1231 with interval [+0.0721, +0.1783]. This interval is numerically positive, but the comparison is structurally confounded because empty B evidence encodes the NEI class. The cleanest available comparison for evidence-bearing claims is the 182-claim slice: B-A is +0.0352 with interval [-0.0275, +0.0974]. It meets the point-estimate threshold but not the interval rule. C-A is -0.0021 with interval [-0.0629, +0.0591]. These results do not establish a practically meaningful improvement.
+
+\subsection{Hit/miss relation is descriptive}
+Among the 182 evidence-eligible claims, BM25 retrieves at least one gold evidence document for 164 claims and misses for 18. Hit and miss groups have different class composition: 115 SUPPORT and 49 CONTRADICT in the hit group, versus 7 SUPPORT and 11 CONTRADICT in the miss group. The downstream accuracy comparison is therefore descriptive and may be confounded by class mix. The Fisher exact result recorded for condition C hit versus miss is $p=0.0723$; with only 18 misses, this is not used as a definitive hypothesis test or causal statement.
+
+\subsection{Sensitivity to near-duplicate filtering}
+The threshold-0.70 sensitivity analysis produces 209 matched claims and 127 evidence-bearing claims. In this smaller evidence slice, B-A is +0.0564 with 95\% interval [-0.0401, +0.1535], and C-A is -0.0037 with interval [-0.0901, +0.0852]. The estimates are directionally compatible with the primary evidence slice but remain uncertain. Because changing the threshold also changes the included examples and class distribution, this is a sensitivity analysis, not a direct replication on identical claims.
+
+\section{Results}
+\subsection{RQ1: classification}
+Table~\ref{tab:main} summarizes the saved evaluation outputs. On the 286-claim matched set, B has the highest macro-F1 (0.4988), followed by A (0.3757) and C (0.3650). The 182-claim gold-evidence slice gives B=0.3492, A=0.3140 and C=0.3119. The evidence slice has only SUPPORT and CONTRADICT labels, so its two-class macro-F1 must not be compared directly with the three-class primary macro-F1. Figure~\ref{fig:f1} visualizes the primary three-class and evidence-slice two-class results side by side.
+
+\begin{table}[t]
+\centering\small
+\caption{Saved development-set results.}
+\label{tab:main}
+\begin{tabular}{llrr}
+\toprule
+Slice & Condition & Accuracy & Macro-F1\\
+\midrule
+\multirow{3}{*}{286 matched} & A & 0.4615 & 0.3757\\
+& B & 0.6014 & 0.4988\\
+& C & 0.4371 & 0.3650\\
+\midrule
+\multirow{3}{*}{182 evidence} & A & 0.3901 & 0.3140\\
+& B & 0.4835 & 0.3492\\
+& C & 0.3736 & 0.3119\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On the primary 286 claims, CONTRADICT F1 is 0.0476 for A, 0.0444 for B and 0.0659 for C; this indicates that all three lexical models struggle to identify refuting evidence. The primary B-A difference is +0.1231 (95\% CI [0.0721, 0.1783]). That apparent gain is not interpretable as a benefit of gold evidence because empty evidence maps directly to the NEI class in both training and B inputs.
+
+On the clean 182-claim evidence slice, B-A is +0.0352 with 95\% CI [-0.0275, 0.0974]. The estimate is slightly above the +0.03 practical-effect reference, but the interval includes zero, so the predeclared rule is not satisfied. C-A is -0.0021 with 95\% CI [-0.0629, 0.0591], also inconclusive.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/macro_f1_by_condition.png}
+\caption{Macro-F1 by input condition. The two evaluation slices use different class sets.}
+\label{fig:f1}
+\end{figure}
+
+\subsection{Empty-evidence shortcut control}
+A deterministic rule predicting NEI whenever B evidence is empty and SUPPORT otherwise achieves accuracy 0.7902 and macro-F1 0.6009 on all 286 claims, exceeding B (0.6014 and 0.4988). On the 182-claim evidence slice, the rule predicts SUPPORT for all claims and achieves accuracy 0.6703 and macro-F1 0.4013, again exceeding B (0.4835 and 0.3492). B minus rule on the evidence slice is -0.0521 macro-F1 (95\% CI [-0.0927, -0.0057]). These outputs reveal a structural shortcut in the full-set B comparison and caution against interpreting the large all-claim gain as improved evidence reasoning.
+
+\subsection{RQ2: retrieval and correctness}
+BM25 retrieves at least one annotated gold document in 164 of 182 eligible claims (Recall@5=0.9011), compared with 151/182 for TF--IDF (0.8297). Yet C is not more accurate than A on the evidence slice (0.3736 vs 0.3901). Among BM25 hits (n=164; 115 SUPPORT and 49 CONTRADICT), accuracy is A=0.4024, B=0.5000 and C=0.3963. Among misses (n=18; 7 SUPPORT and 11 CONTRADICT), accuracy is A=0.2778, B=0.3333 and C=0.1667. The small miss group and different class composition make this comparison exploratory. The recorded Fisher exact test for C hit versus miss has p=0.0723; it is not interpreted as conclusive evidence. Figure~\ref{fig:retrieval} summarizes document-level Recall@5 for the two retrieval methods.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/retrieval_recall_at5.png}
+\caption{Document-level Recall@5 from the archived retrieval evaluation.}
+\label{fig:retrieval}
+\end{figure}
+
+\subsection{Sensitivity to near-duplicate threshold}
+At Jaccard threshold 0.7, the 127-claim evidence slice yields B-A=+0.0564 (95\% CI [-0.0401, 0.1535]) and C-A=-0.0037 (95\% CI [-0.0901, 0.0852]). These intervals remain broad and cross zero. The analysis is reported as a sensitivity check, not as the headline result.
+
+\section{Discussion}
+The main findings are threefold. First, the apparent B advantage over the full three-class matched set is driven at least in part by the empty-evidence/NEI representation. The structural rule performs better than the B classifier, and B is an oracle comparison only for claims with annotated gold evidence. Second, the gold-evidence slice shows a positive but uncertain B-A estimate that fails the predefined confidence-interval rule. Third, BM25 has stronger document Recall@5 than TF--IDF, but retrieval success is not translated into better classification by the tested lexical verifier.
+
+One possible explanation for the low CONTRADICT F1 is that a bag-of-words representation does not adequately encode negation, directionality or relational context. This mechanism is plausible but was not isolated by the current experiment. Another possible issue is the large C input context: the project audit reports roughly 8,000 characters on average and that the 100,000-feature cap binds. The effect of input length and feature saturation requires a controlled follow-up, not speculation presented as fact.
+
+The results support a careful negative/inconclusive conclusion rather than a performance claim. Retrieval is useful for finding candidate documents (as measured by Recall@5), but the classifier may still fail to use them. The study therefore reinforces the need to measure retrieval quality and label correctness independently.
+
+\section{RQ3 Status and Error Analysis Plan}
+A stratified sample of 50 incorrect claim-condition predictions was drawn after freezing a seven-category codebook and recording a post-draw amendment for claims without gold evidence. The sample contains 17 A errors, 17 B errors and 16 C errors, selected with seed 42. A separate AI-assisted preliminary review assigned one provisional code to each row after inspecting claim text and relevant gold/retrieved abstract text from public SciFact mirrors. The preliminary file contains 31 `LABEL_DECISION_ERROR`, 14 `AMBIGUOUS_ANNOTATION`, 3 `OTHER_UNCERTAIN`, 1 `NO_EVIDENCE_SEEN` and 1 `RETRIEVAL_MISS` assignment. The two metadata-deterministic assignments are B/303 (`NO_EVIDENCE_SEEN`) and C/756 (`RETRIEVAL_MISS`); the remaining 48 are text-review judgments. The source mirrors are not checksum-matched to the exact historical corpus snapshot used in the experiment, and all 50 labels require student/domain verification against that local snapshot and the condition-specific inputs. The counts are therefore preliminary descriptors of this deliberately sampled error set, not final human-coded prevalence estimates and not estimates for the full SciFact dataset. There is no independent second annotator, so no inter-annotator agreement or Cohen's kappa is reported. Raw abstracts are not redistributed; the project records the source URLs, identifiers, uncertainty notes and a student verification sheet. The original frozen sample and codebook remain unchanged, and the preliminary labels are stored as a separate versioned artifact.
+
+\section{Limitations and Threats to Validity}
+The evaluation uses one development split and a single frozen run, not an untouched test set or multi-seed estimate. The 286-claim matched set is smaller than the full dev split after near-duplicate hold-out. Conditions are separately fitted models using a common model family; observed differences are not a causal intervention on one fixed model. The condition-B NEI empty-evidence shortcut makes all-claim results confounded. The lexical verifier has very low CONTRADICT F1. The top-five miss group has only 18 claims. RQ3 text-based coding is preliminary: all 50 rows have AI-assisted provisional codes, but the public mirrors are not checksum-matched to the historical corpus and all 50 require student verification. The BM25 epsilon behaviour for frequent terms and the feature-cap effect are not isolated. Colab/GPU and clean-checkout reruns have not been verified. The official SciFact repository license file identifies CC BY 4.0 for claim/evidence annotations, ODC-By 1.0 for corpus abstracts, and Apache 2.0 for code. However, the downloaded source was the moving `release/latest` archive rather than an immutable commit, and the Hugging Face mirror displays a different CC BY-NC 2.0 license label. The exact archive-to-revision license association is therefore not fully closed; raw data remain excluded.
+
+\section{Conclusion}
+This matched SciFact development-set study compared claim-only, gold-evidence and BM25-retrieved-evidence inputs using a TF--IDF plus logistic-regression verifier. The gold-evidence condition appeared stronger on the full three-class set, but this result is confounded by empty-evidence NEI examples and is weaker than a simple evidence-presence rule. On the gold-evidence slice, the estimated B-A gain is small and uncertain; retrieved evidence does not improve macro-F1 over claim-only despite BM25 Recall@5 of 90.11\%. The evidence supports no claim of a reliable practical improvement. The study's most defensible outcome is an auditable comparison that exposes a shortcut and demonstrates why retrieval and classification should be measured separately. A final taxonomy-guided error analysis remains future work until all 50 preliminary codes are verified against the exact historical corpus snapshot and the condition-specific inputs; an independent second coder would be needed for an agreement statistic.
+
+
+\section{Reproducibility and Artifact Traceability}
+The companion repository contains the source modules, scripts, YAML configuration, exact prediction CSVs, retrieval rank files, metric JSON, confusion matrices, codebook, sampling metadata, protocol-change log and original run logs. The prediction files are timestamped and their SHA-256 hashes are embedded in the evaluation metadata. A read-only verifier in the final package independently checks those hashes, the 286-row count, unique claim identifiers and equality of the A/B/C claim sets. This final review reran that verifier successfully. It did not rerun model training because raw SciFact files are not included in the ZIP.
+
+The original environment snapshot records Python 3.11.2 and CPU-only Torch; CUDA was unavailable. Colab execution is not evidenced. The present review container runs Python 3.13.5 and does not have rank-bm25 installed. In this container, the full suite could not complete collection because two retrieval-dependent test modules require the missing `rank-bm25==0.2.2` package. A run excluding only those two modules passed 51 tests; three RQ3 enrichment tests and five metadata-code tests also passed independently. This is partial test coverage in Python 3.13.5, not a full-suite pass and not a run in the recorded Python 3.11.2 environment. The archived project record reports a 59-test pass, but no complete raw test stdout was included in the source archive; that historical count should be treated as project-reported rather than independently reproduced here.
+
+The upstream acquisition setting points to a moving `release/latest` tarball. File hashes are recorded, but the upstream commit identifier is not. Component-level licence terms have now been identified from the official AllenAI repository: CC BY 4.0 for claims/evidence annotations, ODC-By 1.0 for S2ORC abstracts, and Apache 2.0 for repository code. The exact downloaded archive is not mapped to an immutable commit, so archive-to-revision licence association remains partially unresolved. Raw data are therefore not redistributed. A fresh clean-checkout reproduction, an immutable upstream revision pin, and snapshot-level licence confirmation remain necessary before any raw-data redistribution.
+
+\section*{Data and Code Availability}
+The code, scripts, configs, archived result outputs and logs are included in the accompanying project repository. Raw SciFact files and fitted model objects are omitted. The recorded acquisition source is the official AllenAI SciFact S3 `release/latest` archive, downloaded on 2026-10-30; the prior project log records its SHA-256. The upstream repository license assigns CC BY 4.0 to claims/evidence annotations, ODC-By 1.0 to S2ORC corpus abstracts, and Apache 2.0 to code \citep{allenai2026scifactlicense}. The downloaded archive is identified by its recorded hash but is not mapped to an immutable upstream commit. A separate Hugging Face mirror lists CC BY-NC 2.0 and a different split layout; it was not the source used for these experiments. Raw data are excluded pending snapshot-level confirmation.
+
+\section*{AI Assistance and Research Integrity}
+AI tools supported coding, debugging and document preparation as disclosed in `ai_assistance_log.md`. The manuscript's numeric results are taken from timestamped project outputs. No new model-training or retrieval experiment is claimed in this final review. An AI-assisted preliminary text review of all 50 RQ3 sample rows is documented separately; those codes are not student-final and require verification against the exact historical local corpus. The page-level conceptual link to the original review is provided in `review_to_experiment_trace.md`; the student must review and own that interpretation before submission.
+
+\balance
+\input{references_manual.tex}
+\end{document}

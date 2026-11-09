@@ -1,0 +1,64 @@
+{
+  "run_id": "retrieval_20261030T131217Z",
+  "timestamp_utc": "20261030T131217Z",
+  "top_k": 5,
+  "corpus_sha256": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+  "n_docs": 5183,
+  "doc_text": "title + ' ' + ' '.join(abstract sentences, original order)",
+  "n_queries": {
+    "train": 809,
+    "dev": 286
+  },
+  "query_ids_sha256": "8ade617b116da2a95cb48f5d213ccd07b0ab3ccc60e648493731db004b879bdf",
+  "matched_dir": "results/audit/dev_all_labeled_nd-holdout",
+  "methods": {
+    "bm25": {
+      "settings": {
+        "method": "bm25",
+        "implementation": "rank-bm25==0.2.2 BM25Okapi",
+        "k1": 1.5,
+        "b": 0.75,
+        "epsilon": 0.25,
+        "tokenizer": "\\w+",
+        "lowercase": true,
+        "stopwords": null,
+        "stemming": null,
+        "tie_rule": "descending score; ties broken by ascending numeric doc_id"
+      },
+      "index_version": "bm25|rank-bm25==0.2.2 BM25Okapi|corpus=b8d6c89624cb",
+      "index_seconds": 0.613,
+      "search_seconds": 25.768,
+      "ms_per_query": 23.532
+    },
+    "tfidf": {
+      "settings": {
+        "method": "tfidf",
+        "implementation": "scikit-learn==1.9.1 TfidfVectorizer",
+        "ngram_range": [
+          1,
+          2
+        ],
+        "norm": "l2",
+        "lowercase": true,
+        "min_df": 1,
+        "token_pattern": "(?u)\\b\\w+\\b",
+        "vocabulary_size": 479115,
+        "tie_rule": "descending score; ties broken by ascending numeric doc_id"
+      },
+      "index_version": "tfidf|scikit-learn==1.9.1 TfidfVectorizer|corpus=b8d6c89624cb",
+      "index_seconds": 3.099,
+      "search_seconds": 9.609,
+      "ms_per_query": 8.775
+    }
+  },
+  "hardware": {
+    "platform": "Linux-6.12.94+-x86_64-with-glibc2.36",
+    "cpus": 96,
+    "python": "3.11.2"
+  },
+  "versions": {
+    "rank-bm25": "0.2.2",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.4.6"
+  }
+}
