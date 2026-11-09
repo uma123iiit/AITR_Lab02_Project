@@ -46,6 +46,7 @@ On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0
 - `paper/` - LaTeX manuscript source, bibliography, citation audit and reference notes. The compiled PDF and figure image assets are not part of the current GitHub upload yet.
 - `data/README.md` - dataset download link, acquisition, split and component-license provenance; raw data are excluded.
 - `research_decisions.md`, `review_to_experiment_trace.md`, `baseline_validation.md`, `ai_assistance_log.md` - research provenance and verification.
+- `FINAL_STUDENT_REVIEW_CHECKLIST.md` - submission, reproducibility and RQ3 student-review checklist.
 
 ## Reproduction (test required on a clean machine)
 Use the recorded Python 3.11.2 CPU environment. Raw dataset files are not distributed.

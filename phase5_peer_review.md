@@ -2,7 +2,7 @@
 
 ## Prompt 15 - Manuscript deliverables
 
-The package includes `paper/research_paper.tex`, `paper/references.bib`, figure source files and an **8-page** compiled `paper/Research_Paper.pdf`, satisfying the instructor's 6-10-page target. The manuscript is evidence-grounded and labels the study as a development-set evaluation. It does not present the RQ3 taxonomy as completed. Student name is populated as Umakant Singh; enrollment number remains a placeholder for the student to fill.
+The repository includes `paper/research_paper.tex` and `paper/references.bib`. The manuscript was compiled as an **8-page** A4 document and its rendered pages were inspected in the review environment. The compiled PDF and figure exports are not currently present in the GitHub tree. Recompile the current source before submission and confirm the final page count. The manuscript labels the study as a development-set evaluation and does not present RQ3 as completed human annotation.
 
 ## Prompt 16 - Internal technical peer review
 
@@ -29,7 +29,7 @@ Minor issues:
 |---|---|---|
 | Unsupported novelty | Manuscript states controlled comparison and cites CliVER overlap | Student checks closest-paper protocol/supplement |
 | B shortcut | Added explicit empty-evidence rule comparison and cautious interpretation | Keep this prominent in viva |
-| RQ3 incomplete | Marked uncoded, included worksheet and exact coding steps | Student/annotator must code 50 cases |
+| RQ3 preliminary | Added an AI-assisted preliminary pass and a student verification guide; explicitly distinguished preliminary codes from final annotations | Student must review all 50 rows against the exact dataset snapshot and record decisions |
 | Audit chronology | Added Phase III audit chronology clarification | None unless newer audit generated |
 | Missing lock file | Added lock snapshot from archived `pip freeze` | Clean install/rerun |
 | License uncertainty | Preserved source conflict and excludes raw dataset | Check full terms before public release |
@@ -45,6 +45,6 @@ A cleaned README is included. It describes problem, data acquisition, dependenci
 1. **0:00-0:40 - Question:** State A/B/C conditions, RQ1-RQ3 and why this is a controlled comparison rather than a novelty claim.
 2. **0:40-1:30 - Data/protocol:** Show SciFact splits, 286 matched dev claims, 14 near-duplicate exclusions, 182 gold-evidence claims and the no-test-label rule.
 3. **1:30-2:30 - Code:** Open `scripts/07_run_condition.py`, `src/scifact_verif/verifier.py`, `scripts/05_run_retrieval.py` and the frozen config. Explain one input-output path.
-4. **2:30-3:40 - Results:** Show `results/results.csv`, paired bootstrap CSV and retrieval recall figure. Explain B's empty-evidence shortcut and C's lack of improvement.
-5. **3:40-4:30 - Audit:** Show `baseline_validation.md`, protocol changes and RQ3 worksheet; state that coding and clean-checkout rerun remain incomplete.
+4. **2:30-3:40 - Results:** Show `results/results.csv`, paired bootstrap CSV and the saved retrieval metrics. Explain B's empty-evidence shortcut and C's lack of improvement.
+5. **3:40-4:30 - Audit:** Show `baseline_validation.md`, protocol changes and the RQ3 preliminary/student verification files; explain that AI-assisted coding is preliminary, student verification remains outstanding, and a clean-checkout rerun is still required.
 6. **4:30-5:00 - Limitations/next steps:** Explain license, dev-only evaluation, CPU-only runtime and how to rerun one component.

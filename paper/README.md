@@ -13,7 +13,7 @@ The compiled PDF and figure exports are not currently included in this GitHub re
 
 The manuscript reports results from the matched SciFact development set. It does not report results on the hidden official test labels. The study compares claim-only, gold-evidence and BM25-retrieved-evidence conditions using the archived experimental outputs.
 
-The RQ3 sample has a preliminary AI-assisted coding pass. Those codes are not final human annotations. The student review sheet must be completed against the exact dataset snapshot used in the experiment before presenting RQ3 as human-verified findings. No inter-annotator agreement statistic is reported.
+The RQ3 sample has an AI-assisted preliminary coding pass covering all 50 frozen rows. The 48 text-based judgments require student review against the exact dataset snapshot and frozen codebook; two deterministic metadata assignments are documented separately. Do not describe the codes as human-verified or final until the student review sheet records the actual decisions, reviewer and date. No inter-annotator agreement statistic is reported.
 
 ## Build instructions
 
