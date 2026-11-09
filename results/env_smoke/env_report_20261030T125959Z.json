@@ -1,0 +1,79 @@
+{
+  "timestamp_utc": "20261030T125959Z",
+  "seed": 42,
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "rank-bm25": "0.2.2",
+    "pyyaml": "6.0.3",
+    "pandas": "3.0.6",
+    "psutil": "7.2.2",
+    "torch": "2.15.0+cpu",
+    "transformers": "5.20.1",
+    "sentencepiece": "0.2.2",
+    "tqdm": "4.70.1",
+    "matplotlib": "3.11.2"
+  },
+  "system": {
+    "python": "3.11.2",
+    "platform": "Linux-6.12.94+-x86_64-with-glibc2.36",
+    "cpus": 96,
+    "ram_gb": 377.9,
+    "disk_free_gb": 4816.7,
+    "colab": false
+  },
+  "gpu": {
+    "torch": "2.15.0+cpu",
+    "torch_cuda_build": null,
+    "cuda_available": false,
+    "cudnn": null
+  },
+  "results": [
+    {
+      "check": "packages",
+      "status": "PASS",
+      "detail": "all present"
+    },
+    {
+      "check": "system",
+      "status": "PASS",
+      "detail": "{\"python\": \"3.11.2\", \"platform\": \"Linux-6.12.94+-x86_64-with-glibc2.36\", \"cpus\": 96, \"ram_gb\": 377.9, \"disk_free_gb\": 4816.7, \"colab\": false}"
+    },
+    {
+      "check": "gpu",
+      "status": "WARN",
+      "detail": "CUDA unavailable -> NLI runs on CPU (slow); {\"torch\": \"2.15.0+cpu\", \"torch_cuda_build\": null, \"cuda_available\": false, \"cudnn\": null}"
+    },
+    {
+      "check": "seed_reproducibility",
+      "status": "PASS",
+      "detail": "{\"seed\": 42, \"deterministic_requested\": false, \"numpy\": true, \"torch\": true, \"torch_deterministic_algorithms\": false}"
+    },
+    {
+      "check": "data_audit",
+      "status": "PASS",
+      "detail": "data dir /tmp/scifact-run/repo/data/raw/scifact/data"
+    },
+    {
+      "check": "tfidf_logreg",
+      "status": "PASS",
+      "detail": "20 smoke claims scored (plumbing only)"
+    },
+    {
+      "check": "condition_inputs_ABC_and_bm25",
+      "status": "PASS",
+      "detail": "top-5 ids valid; B/C inputs constructed"
+    },
+    {
+      "check": "tfidf_retrieval",
+      "status": "PASS",
+      "detail": "top-5 ids valid"
+    },
+    {
+      "check": "nli_deberta",
+      "status": "PASS",
+      "detail": "model loads, labels read from config, forward pass ok on cpu"
+    }
+  ]
+}
