@@ -23,11 +23,11 @@ This audit checks all 12 keys cited in `research_paper.tex` against authoritativ
 
 ## Figure, table and cross-reference audit
 
-- The manuscript contains two figures and two tables. Their files are present under `paper/figures/` and the paper references each with a LaTeX `\ref{...}` callout.
+- The manuscript contains two figures and two tables. Their files are present directly under `paper/` and the paper references each with a LaTeX `\ref{...}` callout.
 - Figure 1 (`macro_f1_by_condition.png`) depicts the six values in the Results table: macro-F1 0.3757/0.4988/0.3650 for the 286-claim three-class matched set and 0.3140/0.3492/0.3119 for the 182-claim two-class evidence slice. The caption says the slices use different class sets; the text explicitly warns not to compare their macro-F1 values directly.
 - Figure 2 (`retrieval_recall_at5.png`) depicts 164/182 = 90.11% for BM25 and 151/182 = 82.97% for TF–IDF. These are retrieval Recall@5 values, not classifier accuracy.
 - The classification tables are derived from the archived per-claim output CSVs and saved metric JSON. `scripts/14_verify_saved_outputs.py` and `scripts/15_audit_archived_results.py` independently recompute and check the archived metrics. Their audit does not retrain the models.
-- LaTeX label/reference scan: every `\ref{...}` used in the paper has a corresponding `\label{...}` declaration. The RQ3 section makes clear that the 50 sampled cases are not yet coded and reports no taxonomy category counts or agreement statistic.
+- LaTeX label/reference scan: every `\ref{...}` used in the paper has a corresponding `\label{...}` declaration. The RQ3 section reports the student's manually reviewed category counts for the 50 sampled cases, explicitly limits interpretation to that selected sample, and reports no inter-annotator agreement statistic because no independent second annotator was used.
 
 ## Issues corrected during this audit
 
@@ -38,4 +38,4 @@ This audit checks all 12 keys cited in `research_paper.tex` against authoritativ
 
 ## Limits of this check
 
-This is a citation metadata and claim-alignment review, not a systematic review of every full cited paper. It does not validate every source's underlying experimental methodology. The 2026 arXiv papers are preprints. The original SciFact source archive's exact immutable commit remains unidentified. The archived results were checked as outputs, but model training and retrieval were not rerun because the raw dataset is not included and the current audit runtime lacks `rank-bm25==0.2.2`.
+This is a citation metadata and claim-alignment review, not a systematic review of every full cited paper. It does not validate every source's underlying experimental methodology. The 2026 arXiv papers are preprints. The original SciFact source archive's exact immutable commit remains unidentified. The archived results were checked as outputs, but model training and retrieval were not rerun because the raw dataset is not included and the isolated review runtime lacked `rank-bm25==0.2.2`; the student separately confirms that the complete test suite passes in the working project environment. This audit did not rerun model training or retrieval.
