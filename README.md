@@ -22,7 +22,7 @@ On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0
 
 ## Project overview
 
-The repository contains the research paper, LaTeX source and bibliography, implementation, reproducibility notebook, configuration, dataset instructions, evaluation scripts, archived experimental evidence, provenance documents and demonstration materials. The manuscript is nine pages and uses the instructor-provided template.
+The repository contains the research paper, LaTeX source and bibliography, implementation, reproducibility notebook, configuration, dataset instructions, evaluation scripts, archived experimental evidence and provenance documents. The manuscript is nine pages and uses the instructor-provided template.
 
 The student confirms that the complete test suite passes in the working project environment. An earlier review-container attempt could not collect two test modules because that separate environment lacked `rank-bm25`; this environment-specific issue was not a project test failure.
 
@@ -63,10 +63,6 @@ The 50-row RQ3 sample has been manually reviewed and verified by the student. Th
 - [Baseline validation report](baseline_validation.md)
 - [Reproducibility audit](reproducibility_audit.md)
 - [AI assistance and verification log](ai_assistance_log.md)
-- [Final student review checklist](FINAL_STUDENT_REVIEW_CHECKLIST.md)
-
-### E. Demonstration and viva
-- [Five-minute demonstration script](demo_5min.md)
 
 ## Figures
 
@@ -101,7 +97,7 @@ AITR_Lab02_Project/
 ├── reproducibility_audit.md
 ├── ai_assistance_log.md
 ├── phase1_gap_matrix.md
-└── demo_5min.md
+└── ai_assistance_log.md
 ```
 
 Raw SciFact data and fitted private model objects are not included. See `data/README.md` for acquisition instructions and licensing details.
