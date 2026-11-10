@@ -1,0 +1,3 @@
+# Notebook status
+
+No Jupyter notebook (.ipynb) is included in this repository. The executable research workflow is provided through reusable Python modules under `src/`, command-line entrypoints under `scripts/`, and tests under `tests/`. This is intentional and is disclosed rather than presenting scripts as a notebook submission. If the instructor explicitly requires an `.ipynb`, add a thin, verified notebook that invokes the existing workflow and rerun it in the target environment; do not include unexecuted output cells.
