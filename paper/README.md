@@ -34,12 +34,11 @@ It does not report performance on the hidden official test labels. The study
 compares claim-only, gold-evidence, and BM25-retrieved-evidence conditions
 using the archived experimental outputs.
 
-The RQ3 sample has preliminary AI-assisted codes covering 50 frozen rows.
-The text-based judgments remain preliminary until the student records the
-actual verification decisions in the review sheet. The deterministic metadata
-assignments are documented separately. Do not describe the codes as
-human-verified or final unless that review is complete. No inter-annotator
-agreement statistic is reported.
+The 50-row RQ3 sample was manually reviewed and verified by the student.
+Its category counts are descriptive of this frozen sample and should not be
+interpreted as population prevalence estimates. No inter-annotator agreement
+statistic is reported because no independent second human annotator is
+reported.
 
 ## Build instructions
 
