@@ -48,3 +48,7 @@ Not unit-tested in the archived record: scripts/10, 11, 12, 13 and the audit scr
 ## Emergency verification update (02 November 2026)
 
 The codebase was recompiled successfully with Python 3.13.5. The available partial test run passes 46 tests when excluding only `test_inputs.py` and `test_retrieval.py`, both of which fail collection due to the missing `rank-bm25` dependency. The three RQ3 text-enrichment tests and five new deterministic metadata-code tests pass independently. The full suite remains blocked; Python 3.11.2 environment-matched execution is still required. Archived predictions/metrics were rechecked by `scripts/14_verify_saved_outputs.py`; this validates saved files, not model training or inference. Raw logs are under `logs/emergency_reaudit_20261102/`.
+
+## Working-environment status update (10 November 2026)
+
+The student confirms that the complete project test suite passes in the working project environment. The Python 3.13.5 review-container import blocker described above is retained as historical provenance for that separate environment only; it is not evidence that the student's working environment fails. This confirmation is student-reported and was not independently rerun by the reviewer in the student's environment. The archived-output verifier and metric audit remain checks of saved outputs, not a fresh model-training reproduction.
