@@ -42,11 +42,9 @@ reported.
 
 ## Build instructions
 
-The current manuscript PDF is included in this directory. If rebuilding,
+The LaTeX source has been updated to reflect the student's completed manual review of the 50-case RQ3 sample and to use the figure filenames present directly in this directory. The committed `Revised_SciFact_Research_Paper.pdf` is still the previous compiled build and must be regenerated from the current `research_paper.tex` before submission. If rebuilding,
 compile `research_paper.tex` with a LaTeX distribution and BibTeX installed.
-Use the usual LaTeX–BibTeX–LaTeX–LaTeX sequence, or the equivalent build
-command supported by your TeX distribution. Inspect the resulting PDF for
-references, figure placement, page breaks, and layout.
+Run the usual LaTeX–BibTeX–LaTeX–LaTeX sequence from this directory, or use the equivalent build command supported by your TeX distribution. The source references figure files in this same directory. Inspect the regenerated PDF for references, figure placement, page breaks, and layout.
 
 ## Reproducibility and data
 
