@@ -38,11 +38,11 @@ Source protocol: Prompt05 brief, Prompt06 sheet, Prompt07 blueprint (provenance/
 - On the 182-claim gold-evidence slice the empty-evidence rule predicts SUPPORT for every claim (macro-F1 0.401); A 0.314, B 0.349 and C 0.312 are all below it, and B - rule = -0.052 (CI [-0.093, -0.006]). On the 127-claim sensitivity slice B (0.427) is slightly above the rule (0.409), +0.018, CI [-0.040, +0.089], so that result is inconclusive.
 - RQ2: BM25 Recall@5 = 164/182 = 0.901. Accuracy by hit/miss is confounded by label mix and n(miss) = 18.
 
-## Next actions
-1. Student codes results/rq3/rq3_sample.csv with the frozen codebook plus amendment 1 (single annotator = descriptive).
-2. Shuffled-label controls for B and C. 3. Colab rerun, compare probabilities within 1e-6. 4. BM25 epsilon=0 exploratory check.
-5. Record upstream data commit and resolve the licence. 6. Verify the review-to-gap trace using the original review and Prompt03/04.
-7. Finish README (Prompt 17), write the paper (Prompt 15), then the review (Prompt 16).
+## Next actions (status reconciled 10 November 2026)
+
+The student has manually reviewed and verified all 50 RQ3 sample rows. The category counts are descriptive of this frozen, deliberately selected error sample; no population-prevalence claim or inter-annotator agreement statistic is made. The student also confirms that the complete test suite passes in the working project environment. Earlier entries below remain as historical decision records and are superseded where they conflict with this status.
+
+Remaining optional research extensions are: (1) shuffled-label controls for B and C; (2) a Colab/GPU rerun; (3) an exploratory BM25 epsilon=0 check; and (4) identification of the immutable upstream SciFact revision to close the archive-to-licence provenance gap. These are extensions or provenance improvements, not prerequisites for describing the completed frozen development-set experiment.
 
 
 ## Post-review resolution (02 November 2026)
