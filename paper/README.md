@@ -12,21 +12,20 @@ audit, compiled manuscript PDF, and figure assets used by the paper.
 - `REFERENCES_NOTE.md` — supporting reference notes.
 - `references_manual.tex` — manually managed reference material retained
   for review.
-- `figures/` — location for the manuscript's figure exports.
 
 ## Figures
 
-The manuscript figure exports are expected in `paper/figures/`:
+The manuscript figure exports are stored directly in this directory:
 
 - `macro_f1_by_condition.png` and `macro_f1_by_condition.pdf`
 - `paired_differences_gold_slice.png` and
   `paired_differences_gold_slice.pdf`
 - `retrieval_recall_at5.png` and `retrieval_recall_at5.pdf`
 
-Keep both PNG and PDF versions where supplied. PNG files are convenient for
-previewing in GitHub; PDF files preserve vector-quality output for publication
-and printing. Do not regenerate or alter the figures without checking that
-they remain consistent with the archived results and manuscript.
+Keep both PNG and PDF versions. PNG files are convenient for previewing in
+GitHub; PDF files preserve vector-quality output for publication and printing.
+Do not regenerate or alter the figures without checking that they remain
+consistent with the archived results and manuscript.
 
 ## Scope and reporting
 
@@ -36,18 +35,19 @@ compares claim-only, gold-evidence, and BM25-retrieved-evidence conditions
 using the archived experimental outputs.
 
 The RQ3 sample has preliminary AI-assisted codes covering 50 frozen rows.
-The text-based judgments require student review against the exact dataset
-snapshot and frozen codebook; the deterministic metadata assignments are
-documented separately. Do not describe the codes as human-verified or final
-until the student review sheet records the actual decisions, reviewer, and
-date. No inter-annotator agreement statistic is reported.
+The text-based judgments remain preliminary until the student records the
+actual verification decisions in the review sheet. The deterministic metadata
+assignments are documented separately. Do not describe the codes as
+human-verified or final unless that review is complete. No inter-annotator
+agreement statistic is reported.
 
 ## Build instructions
 
-From this directory, compile `research_paper.tex` with a LaTeX distribution
-and BibTeX installed. Use the usual LaTeX–BibTeX–LaTeX–LaTeX sequence, or the
-equivalent build command supported by your TeX distribution. Inspect the
-resulting PDF for references, figure placement, page breaks, and layout.
+The current manuscript PDF is included in this directory. If rebuilding,
+compile `research_paper.tex` with a LaTeX distribution and BibTeX installed.
+Use the usual LaTeX–BibTeX–LaTeX–LaTeX sequence, or the equivalent build
+command supported by your TeX distribution. Inspect the resulting PDF for
+references, figure placement, page breaks, and layout.
 
 ## Reproducibility and data
 
