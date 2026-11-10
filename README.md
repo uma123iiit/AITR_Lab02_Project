@@ -22,7 +22,7 @@ On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0
 
 ## Project overview
 
-The repository contains the research paper, LaTeX source and bibliography, implementation, reproducibility notebook, configuration, dataset instructions, evaluation scripts, archived experimental evidence and provenance documents. The manuscript is nine pages and uses the instructor-provided template.
+The repository contains the research paper, LaTeX source and bibliography, implementation, reproducibility notebook, configuration, dataset instructions, evaluation scripts, archived experimental evidence and provenance documents. The manuscript is nine pages and uses the instructor-provided template. The LaTeX source has now been reconciled with the verified RQ3 review and corrected figure paths; the committed PDF is the previous compiled build and still needs recompilation from the updated source.
 
 The student confirms that the complete test suite passes in the working project environment. An earlier review-container attempt could not collect two test modules because that separate environment lacked `rank-bm25`; this environment-specific issue was not a project test failure.
 
@@ -31,7 +31,7 @@ The 50-row RQ3 sample has been manually reviewed and verified by the student. Th
 ## Quick links — open the required files directly
 
 ### A. Research paper
-- [Final research paper PDF](paper/Revised_SciFact_Research_Paper.pdf)
+- [Compiled research paper PDF (see build-status note)](paper/Revised_SciFact_Research_Paper.pdf)
 - [LaTeX source](paper/research_paper.tex)
 - [Bibliography (.bib)](paper/references.bib)
 - [Paper folder and build notes](paper/README.md)
