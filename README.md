@@ -34,7 +34,7 @@ The following checklist uses the five submission groups and wording specified in
 
 ### Final actions before submission
 
-- [ ] Add the six original PNG/PDF figure exports to `paper/figures/` and confirm they render on GitHub.
+- [ ] Upload the six original PNG/PDF figure exports to `paper/figures/` and confirm the direct GitHub links open.
 - [ ] Check the final paper is within the recommended 6–10 pages excluding references, and apply the instructor-selected template if one was specified.
 - [ ] Run `notebooks/01_reproducibility_workflow.ipynb` from a clean Colab/local session and record actual outcomes.
 - [ ] Install the pinned dependencies in Python 3.11.2 and run the **complete** test suite, including `test_inputs.py` and `test_retrieval.py`.
@@ -45,6 +45,58 @@ The following checklist uses the five submission groups and wording specified in
 - [ ] Confirm the final paper, figures, and supporting evidence are the exact versions being submitted.
 
 **Current completion statement:** The repository contains the main code, configurations, dependency records, dataset instructions, evaluation scripts, archived experimental evidence, provenance documents and written demonstration/viva preparation. This does not mean every A–E requirement is fully closed: figure exports, complete environment-matched testing, clean reproduction, student verification of RQ3, final manuscript/template checks, and the live demonstration remain student actions or need final verification.
+
+## Quick links — open the required files directly
+
+Use these links instead of searching through folders:
+
+### A. Research paper
+- [Final research paper PDF](paper/Revised_SciFact_Research_Paper.pdf)
+- [LaTeX source](paper/research_paper.tex)
+- [Bibliography (.bib)](paper/references.bib)
+- [Paper folder and build notes](paper/README.md)
+- [Citation audit](paper/CITATION_AUDIT.md)
+
+### B. GitHub repository and reproducibility
+- [Reproducibility notebook](notebooks/01_reproducibility_workflow.ipynb)
+- [Notebook instructions](notebooks/README.md)
+- [Dependencies](requirements.txt) and [pinned dependency lock](requirements.lock.txt)
+- [Experiment configuration](configs/primary_frozen.yaml)
+- [Dataset acquisition instructions](data/README.md)
+- [Source code](src/)
+- [Scripts](scripts/)
+- [Tests](tests/)
+
+### C. Experimental evidence
+- [Main comparison table](results/results.csv)
+- [Paired comparison and confidence intervals](results/results_paired_differences.csv)
+- [Retrieval hit/miss results](results/results_rq2_hit_miss.csv)
+- [Rule-baseline comparison](results/results_rule_baseline_B.csv)
+- [Evaluation console log](logs/eval_ABC_console.txt)
+- [Archived-output audit log](logs/final_archived_output_audit.txt)
+- [Frozen experiment configuration and seed](configs/primary_frozen.yaml)
+
+### D. Research provenance
+- [Gap matrix / Phase I brief](phase1_gap_matrix.md)
+- [Review-to-experiment trace](review_to_experiment_trace.md)
+- [Research decisions](research_decisions.md)
+- [Baseline validation report](baseline_validation.md)
+- [Reproducibility audit](reproducibility_audit.md)
+- [AI assistance and verification log](ai_assistance_log.md)
+- [Final student review checklist](FINAL_STUDENT_REVIEW_CHECKLIST.md)
+
+### E. Demonstration and viva
+- [Five-minute demonstration script](demo_5min.md)
+
+**Viva preparation:** A separate viva Q&A file was listed in an earlier inventory, but its current GitHub path could not be verified. It is therefore not linked as an available file here.
+
+### Figure upload status
+The manuscript expects six exports in `paper/figures/`:
+`macro_f1_by_condition.png`, `macro_f1_by_condition.pdf`,
+`paired_differences_gold_slice.png`, `paired_differences_gold_slice.pdf`,
+`retrieval_recall_at5.png`, and `retrieval_recall_at5.pdf`.
+
+These six paths were checked on the current GitHub `main` branch and were not found. Upload them into `paper/figures/` before marking the figure requirement complete. The figure names and folder are documented in [paper/README.md](paper/README.md).
 
 ## Repository structure
 
