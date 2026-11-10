@@ -96,8 +96,7 @@ AITR_Lab02_Project/
 ├── baseline_validation.md
 ├── reproducibility_audit.md
 ├── ai_assistance_log.md
-├── phase1_gap_matrix.md
-└── ai_assistance_log.md
+└── phase1_gap_matrix.md
 ```
 
 Raw SciFact data and fitted private model objects are not included. See `data/README.md` for acquisition instructions and licensing details.
