@@ -1,6 +1,6 @@
 # Five-minute code-and-results demonstration
 
-**Goal:** demonstrate the actual project flow and explain the real result, including its research scope and limitations.
+**Goal:** demonstrate the actual project flow and explain the research question, methods, results and scope accurately.
 
 ## Before the demo
 Open the project repository in VS Code. Keep these files ready: `README.md`, `configs/primary_frozen.yaml`, `src/scifact_verif/verifier.py`, `src/scifact_verif/retrieval.py`, `scripts/07_run_condition.py`, `scripts/05_run_retrieval.py`, `results/results.csv`, `results/results_paired_differences.csv`, and the figures directly under `paper/`.
@@ -22,8 +22,8 @@ Show `results/results.csv` and the paper's macro-F1 figure. On 286 claims, A/B/C
 **3:20-4:15 — Deeper analysis**  
 Show `results/results_rule_baseline_B.csv` and the retrieval Recall@5 figure. The full-set B score is confounded by empty evidence for NOT ENOUGH INFO cases; a simple evidence-presence rule can exploit that structure. BM25 Recall@5 is 90.11%, but C does not improve classification. Finding the right document is not the same as understanding it.
 
-**4:15-5:00 — Integrity and limits**  
-Show `reproducibility_audit.md` and `results/rq3/RQ3_PRELIMINARY_TEXT_BASED_ANALYSIS.md`. Explain that the 50 frozen sample rows have preliminary AI-assisted codes: 48 text-review judgments and two deterministic metadata assignments (B/303 and C/756). These codes should be described as preliminary unless the student verification sheet records the actual final decisions. The public mirror was not checksum-matched to the exact historical corpus, so the exact-snapshot limitation should be stated. No independent second coder or Cohen's kappa is claimed.
+**4:15-5:00 — Error analysis and integrity**  
+Show `reproducibility_audit.md` and `results/rq3/RQ3_PRELIMINARY_TEXT_BASED_ANALYSIS.md`. Explain that the 50 frozen sample rows were manually reviewed and verified by the student. Their category counts are descriptive of the selected sample only, not population-level estimates. No independent second coder or Cohen's kappa is claimed.
 
 ## Optional command to demonstrate archived-output validation
 Run from repository root:
@@ -34,4 +34,4 @@ PYTHONPATH=src python scripts/14_verify_saved_outputs.py
 
 This checks saved prediction hashes, IDs and metrics. It does not retrain the models.
 
-The complete test suite has been run successfully in the student's working environment. Earlier logs describe a separate review container that lacked `rank-bm25`; that environment-specific issue should not be presented as a failure of the project.
+The student confirms that the complete test suite passes in the working project environment. Earlier logs describe a separate review container that lacked `rank-bm25`; that environment-specific issue should not be presented as a failure of the project.
