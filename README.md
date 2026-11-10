@@ -31,7 +31,7 @@ The 50-row RQ3 sample has been manually reviewed and verified by the student. Th
 ## Quick links — open the required files directly
 
 ### A. Research paper
-- [Compiled research paper PDF (see build-status note)](paper/Revised_SciFact_Research_Paper.pdf)
+- [Compiled research paper PDF (see build-status note)](paper/Research_paper.pdf)
 - [LaTeX source](paper/research_paper.tex)
 - [Bibliography (.bib)](paper/references.bib)
 - [Paper folder and build notes](paper/README.md)
@@ -87,7 +87,7 @@ AITR_Lab02_Project/
 ├── results/
 ├── logs/
 ├── paper/
-│   ├── Revised_SciFact_Research_Paper.pdf
+│   ├── Research_paper.pdf
 │   ├── research_paper.tex
 │   ├── references.bib
 │   ├── CITATION_AUDIT.md
