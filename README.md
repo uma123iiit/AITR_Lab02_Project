@@ -24,9 +24,9 @@ On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0
 
 The repository contains the research paper, LaTeX source and bibliography, implementation, reproducibility notebook, configuration, dataset instructions, evaluation scripts, archived experimental evidence, provenance documents and demonstration materials. The manuscript is nine pages and uses the instructor-provided template.
 
-The complete test suite has been run successfully in the student's working environment. An earlier review-container attempt was unable to collect two test modules because that separate environment lacked `rank-bm25`; that environment-specific dependency issue was not a project test failure. Historical logs documenting the earlier attempt are retained as an audit trail.
+The student confirms that the complete test suite passes in the working project environment. An earlier review-container attempt could not collect two test modules because that separate environment lacked `rank-bm25`; this environment-specific issue was not a project test failure.
 
-The RQ3 codes are preliminary AI-assisted suggestions for 50 frozen rows. They must not be described as final human annotations unless the student verification sheet records the actual review decisions, reviewer and date. No Cohen's kappa is claimed.
+The 50-row RQ3 sample has been manually reviewed and verified by the student. The recorded category counts describe the reviewed sample; they should be interpreted as descriptive sample findings, not population prevalence estimates. No Cohen's kappa is claimed because no independent second human annotator is reported.
 
 ## Quick links — open the required files directly
 
@@ -133,7 +133,7 @@ The dataset download script uses the official AllenAI `release/latest` archive, 
 
 - The manuscript reports matched development-set results only; it does not claim hidden test-set performance.
 - Archived prediction outputs have been audited for hashes, row counts, claim IDs and metric consistency.
-- The RQ3 sample contains 50 preliminary AI-assisted codes (48 text-review judgments and two deterministic metadata assignments). These remain preliminary until student verification is recorded. No Cohen's kappa is claimed.
+- The 50-row RQ3 sample has been manually reviewed and verified by the student. Its category counts are descriptive of this frozen sample only. No Cohen's kappa is claimed because there is no independent second human annotator.
 - The study does not claim a new neural architecture or validation of the full nine-category literature-review taxonomy.
 - Raw SciFact data are intentionally excluded. See `data/README.md` for provenance and component-level licensing information.
 
