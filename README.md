@@ -6,76 +6,53 @@
 **Dataset:** SciFact  
 **Study type:** Controlled comparative development-set study
 
-## Dataset download
-
-This project uses the **SciFact** scientific claim-verification dataset released by AllenAI.
-
-- **[Download the official SciFact dataset archive (data.tar.gz)](https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz)**
-- [Official AllenAI SciFact repository and dataset documentation](https://github.com/allenai/scifact)
-- [Dataset schema documentation](https://github.com/allenai/scifact/blob/master/doc/data.md)
-- [Official component licence statements](https://github.com/allenai/scifact/blob/master/LICENSE.md)
-
-To download and extract the current official archive from the repository root:
-
-```bash
-bash scripts/01_download_data.sh
-```
-
-The script downloads the current `release/latest` archive. This is a moving URL and may not be byte-identical to the historical snapshot used for the archived experiments. The project records the historical SHA-256 in `data/README.md`; compare hashes before treating a newly downloaded archive as an exact reproduction. Raw dataset files are intentionally not committed to this repository. See `data/README.md` for source, split, provenance and licence details.
-
 ## Research question
+
 On matched SciFact development claims, how do claim-only (A), claim + annotated gold evidence (B), and claim + BM25 top-five retrieved evidence (C) affect three-way scientific claim-verification performance? Supporting analyses examine retrieval Recall@5 and a prespecified error sample.
 
-## Key results (archived development run)
+## Key archived results
 
 | Condition | Accuracy (n=286) | Macro-F1 (n=286) |
 |---|---:|---:|
-| A - claim only | 0.4615 | 0.3757 |
-| B - gold evidence | 0.6014 | 0.4988 |
-| C - BM25 top-5 evidence | 0.4371 | 0.3650 |
+| A — claim only | 0.4615 | 0.3757 |
+| B — gold evidence | 0.6014 | 0.4988 |
+| C — BM25 top-5 evidence | 0.4371 | 0.3650 |
 
-On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0.3119. The B-A difference is +0.0352 with 95% paired-bootstrap CI [-0.0275, +0.0974], so the predefined improvement rule is not met. BM25 Recall@5 is 164/182 = 90.11%; retrieval success does not guarantee correct classification. All values are development-set results, not test-set results.
+On the 182-claim evidence-bearing subset, macro-F1 is A=0.3140, B=0.3492 and C=0.3119. The B-A difference is +0.0352 with 95% paired-bootstrap CI [-0.0275, +0.0974], so the predefined improvement rule is not met. BM25 Recall@5 is 164/182 = 90.11%. Retrieval success does not guarantee correct classification. These are development-set results, not test-set results.
 
 ## Repository structure
 
-The repository is organised by responsibility:
-
 ```text
-POSTMIDSEMRESEARCH/
+AITR_Lab02_Project/
 ├── README.md
 ├── requirements.txt
 ├── requirements.lock.txt
+├── .gitignore
 ├── configs/                 # experiment settings and frozen protocol/codebook
 ├── data/
-│   └── README.md            # SciFact access, format, provenance and licence notes
-├── src/
-│   └── scifact_verif/       # reusable data, retrieval, verifier and metric modules
+│   └── README.md            # data access, format, provenance and licensing
+├── notebooks/               # notebook status and any verified runnable notebooks
+├── src/scifact_verif/       # reusable data, retrieval, verifier and metric modules
 ├── scripts/                 # download, audit, training, evaluation and analysis entrypoints
 ├── tests/                   # unit and focused validation tests
 ├── results/                 # archived metrics, predictions, audits and RQ3 materials
 ├── logs/                    # recorded command output and audit logs
-├── paper/                   # LaTeX source, bibliography and citation audit
-├── research_decisions.md    # literature-to-experiment decisions
-├── review_to_experiment_trace.md
-├── baseline_validation.md   # baseline checks and recorded deviations
-├── ai_assistance_log.md     # significant AI assistance and verification decisions
-├── phase1_gap_matrix.md
-├── phase2_dataset_protocol.md
-├── phase3_baseline_debug_audit.md
-├── phase4_results_discussion.md
-├── phase5_peer_review.md
-├── phase6_accountability_review.md
-├── protocol_status_reconciliation.md
+├── paper/
+│   ├── research_paper.tex
+│   ├── references.bib
+│   └── figures/              # final manuscript figures
+├── research_decisions.md
+├── baseline_validation.md
 ├── reproducibility_audit.md
-├── demo_5min.md
-├── viva_questions_and_answers.md
+├── ai_assistance_log.md
+├── MANIFEST.md
 └── FINAL_STUDENT_REVIEW_CHECKLIST.md
 ```
 
-The structure above describes the directories and key documents currently used by the project. Raw SciFact data, fitted private model objects and unverified notebook outputs are not included. The executable workflow is organised around the Python modules, command-line scripts and tests; no notebook-based results are claimed.
+The repository contains executable Python modules, command-line scripts and tests. No Jupyter notebook is claimed unless a verified `.ipynb` file is added. Raw SciFact data, fitted private model objects and unverified notebook outputs are not included.
 
+## Reproduction
 
-## Reproduction (test required on a clean machine)
 Use the recorded Python 3.11.2 CPU environment. Raw dataset files are not distributed.
 
 ```bash
@@ -95,33 +72,23 @@ For archived-result verification without raw data:
 PYTHONPATH=src python scripts/14_verify_saved_outputs.py
 ```
 
-For the separate metadata-only RQ3 pre-code and claim text worklist (the latter needs local raw `claims_dev.jsonl`; abstracts are not in this archive):
+The dataset download script uses the official AllenAI `release/latest` archive, a moving URL. Compare the downloaded archive's checksum with the historical SHA-256 in `data/README.md` before treating it as an exact reproduction.
 
-```bash
-PYTHONPATH=src python scripts/18_partial_rq3_metadata_codes.py
-python scripts/17_enrich_rq3_sample.py --data-dir data/raw/scifact
-```
+## Verification and limitations
 
-The second command must be run only where the exact matching SciFact `claims_dev.jsonl` and `corpus.jsonl` are available. The generated text packet contains dataset text and must remain local.
+- The manuscript has been compiled and visually inspected; citation keys were checked against the bibliography.
+- Archived prediction outputs were audited for hashes, row counts, claim IDs and metric consistency.
+- Python compilation checks passed. The latest archived partial test run passed 51 tests with two dependency-blocked modules excluded. The complete test suite has **not** been verified successfully; `rank-bm25==0.2.2` was unavailable during the recorded audit.
+- RQ3 contains AI-assisted preliminary codes for 50 frozen condition–claim rows (48 text-review judgments and two deterministic metadata assignments). These are not final human annotations; student verification remains required. No Cohen's kappa is claimed.
+- The study reports development-set results only. It does not claim hidden test-set performance, a new neural architecture, or validation of the full nine-category literature-review taxonomy.
+- Raw SciFact data are intentionally excluded. See `data/README.md` for provenance and licensing details.
 
-## Implementation and verification status (02 November 2026)
+## Dataset and citation
 
-- **Manuscript preparation:** The LaTeX manuscript was successfully compiled into an eight-page A4 document. The rendered pages were inspected for formatting and layout issues.
-- **Citation verification:** The citation keys used in the manuscript were checked against the bibliography entries. The results are documented in `paper/CITATION_AUDIT.md`.
-- **Archived results verification:** The saved prediction files were checked for consistency, including file hashes, row counts, claim identifiers, accuracy, and macro-F1 scores. The archived outputs passed these checks.
-- **Code and test verification:** Python compilation checks (`compileall`) completed successfully. The latest recorded partial test run passed 46 tests when excluding the two modules blocked at collection by the missing `rank-bm25==0.2.2` dependency. The RQ3 enrichment module passed 3 tests and the metadata-coding module passed 5 tests independently. Earlier audit logs report different partial-run counts; consult the timestamped logs for the exact command and scope. The complete test suite remains unverified. Therefore, the complete test suite has not yet been verified successfully.
-- **Environment limitation:** The project specifies Python 3.11.2. During a later audit using Python 3.13.5, a package-index DNS failure prevented installation of the missing dependency. The complete test suite should be rerun in the specified environment after resolving this dependency issue. Relevant logs are available in `logs/emergency_reaudit_20261102/`.
-- **RQ3 preliminary analysis:** Preliminary AI-assisted codes were generated for all 50 frozen condition–claim combinations. These include 48 text-based review judgments and two deterministic metadata assignments: B/303 (`NO_EVIDENCE_SEEN`) and C/756 (`RETRIEVAL_MISS`). These codes are intended to support the subsequent review process and should not be treated as final human annotations. All 50 cases still require student verification. No inter-annotator agreement statistic, such as Cohen's kappa, is claimed.
-- **Dataset provenance:** The experiments used the official AllenAI SciFact dataset archive. The original acquisition record contains a SHA-256 checksum, but the download URL (`release/latest`) does not identify an immutable upstream version. The raw dataset is therefore excluded from the public repository. The download source, checksum, and licensing information are documented in `data/README.md`.
+- [Official AllenAI SciFact repository](https://github.com/allenai/scifact)
+- [Official SciFact dataset archive](https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz)
+- Primary dataset paper: Wadden et al. (2020), *Fact or Fiction: Verifying Scientific Claims*, EMNLP.
 
-## Data licensing and handling
-The official AllenAI repository license describes claims/evidence annotations as CC BY 4.0, S2ORC-derived corpus abstracts as ODC-By 1.0, and repository code as Apache 2.0. The exact `release/latest` archive is not mapped to an immutable commit, so raw files are not redistributed. The separate Hugging Face mirror reports different licence metadata and split structure; it was not used for the archived run. See `data/README.md`.
+## Submission status
 
-## Contribution boundary
-This is a controlled comparison with a simple lexical verifier, not a new neural architecture or a first-of-kind oracle/open study. The prior literature review motivates evidence provenance and retrieval risk, but the implementation does not test free-form LLM generation or validate the full nine-category literature-review taxonomy. See `review_to_experiment_trace.md`.
-
-## Citation
-The primary dataset paper is Wadden et al. (2020), *Fact or Fiction: Verifying Scientific Claims*, EMNLP. The full bibliography is in `paper/references.bib`.
-
-## GitHub upload status
-The repository includes the core Python source modules, scripts, tests, frozen configurations, research/provenance documents, LaTeX manuscript source, bibliography, selected archived result tables and selected audit logs. The GitHub repository is a curated source-and-evidence package, not a byte-for-byte mirror of the original submission ZIP. The compiled manuscript PDF and figure exports are not currently present under `paper/`; several historical audit logs and supporting binary assets are also absent. Raw SciFact data remain intentionally excluded. See `FINAL_STUDENT_REVIEW_CHECKLIST.md` for the remaining work before submission.
+This repository already contains the core implementation, scripts, tests, configurations, archived result tables, research documentation and LaTeX source. Before submission, verify that the selected final PDF and final figure exports are present under `paper/`, complete student verification of the RQ3 sample, and rerun the full test suite in the pinned environment. Do not represent any of these outstanding checks as complete until evidence is committed.
